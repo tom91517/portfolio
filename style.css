@@ -419,7 +419,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- CONTACT LINKS ---------- */
-.contact-links{ padding:80px 0 120px; }
+.contact-links{ padding:64px 0 72px; }
 .contact-links-row{
   display:grid;
   grid-template-columns:1fr 1fr;
