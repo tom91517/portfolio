@@ -418,6 +418,34 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   .resume-embed{ height:700px; }
 }
 
+/* ---------- CONTACT LINKS ---------- */
+.contact-links{ padding:80px 0 120px; }
+.contact-links-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.contact-link-card{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:36px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--card);
+  transition:border-color .15s ease, transform .15s ease;
+}
+.contact-link-card:hover{ border-color:var(--green); transform:translateY(-1px); }
+.contact-link-value{
+  font-family:'Poppins', sans-serif;
+  font-weight:600;
+  font-size:19px;
+  color:var(--ink);
+}
+@media (max-width:860px){
+  .contact-links-row{ grid-template-columns:1fr; }
+}
+
 /* ---------- COMING SOON ---------- */
 .coming-soon{
   padding:96px 0;
