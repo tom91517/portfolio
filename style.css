@@ -507,45 +507,13 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   margin:0 auto;
 }
 
-/* ---------- FOOTER / CONTACT ---------- */
+/* ---------- FOOTER ---------- */
 footer{
   background:var(--green);
   color:var(--paper);
-  padding:80px 0 40px;
+  padding:32px 0;
 }
-footer .eyebrow{ color:var(--amber); }
-.footer-top{ text-align:center; }
-footer h2{
-  font-family:'Poppins', sans-serif;
-  font-weight:700;
-  letter-spacing:-0.01em;
-  font-size:36px;
-  margin:14px 0 18px;
-}
-footer p.lede{
-  color:rgba(245,246,240,0.8);
-  max-width:42ch;
-  margin:0 auto 32px;
-}
-footer .btn-light{
-  font-family:'Poppins', sans-serif;
-  font-weight:700;
-  font-size:16px;
-  letter-spacing:.02em;
-  text-transform:uppercase;
-  padding:18px 40px;
-  border-radius:var(--radius);
-  background:var(--amber);
-  border:1px solid var(--amber);
-  color:var(--ink);
-  display:inline-block;
-  transition:transform .15s ease, background .15s ease;
-}
-footer .btn-light:hover{ background:#CC9A3E; transform:translateY(-1px); }
 .footer-bottom{
-  margin-top:64px;
-  padding-top:24px;
-  border-top:1px solid rgba(245,246,240,0.2);
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
   font-family:'IBM Plex Mono', monospace;
   font-size:11.5px;
