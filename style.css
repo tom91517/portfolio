@@ -400,6 +400,24 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   margin:0;
 }
 
+/* ---------- RESUME VIEWER ---------- */
+.resume-viewer{ padding:0 0 96px; }
+.resume-embed{
+  width:100%;
+  height:1100px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--card);
+}
+.resume-embed p{
+  padding:40px;
+  text-align:center;
+  color:var(--ink-soft);
+}
+@media (max-width:860px){
+  .resume-embed{ height:700px; }
+}
+
 /* ---------- COMING SOON ---------- */
 .coming-soon{
   padding:96px 0;
