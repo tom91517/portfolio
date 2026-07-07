@@ -106,10 +106,6 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .hero{
   position:relative;
   padding:88px 0 96px;
-  background-image:repeating-linear-gradient(
-    to bottom, rgba(31,77,58,0.05) 0, rgba(31,77,58,0.05) 1px, transparent 1px, transparent 36px
-  );
-  background-position:0 110px;
   overflow:hidden;
 }
 .hero-grid{
@@ -389,7 +385,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 
 /* ---------- PAGE HEADER (subpages) ---------- */
 .page-header{
-  padding:72px 0 56px;
+  padding:40px 0 36px;
   border-bottom:1px solid var(--line);
 }
 .page-header h1{
@@ -583,14 +579,14 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   transition:gap .15s ease;
 }
 .case-back:hover{ gap:10px; }
-.case-hero{ padding:64px 0 56px; border-bottom:1px solid var(--line); }
+.case-hero{ padding:40px 0 44px; border-bottom:1px solid var(--line); }
 .case-hero h1{
   font-family:'Poppins', sans-serif;
   font-weight:700;
   letter-spacing:-0.01em;
   font-size:clamp(26px, 3.2vw, 38px);
   margin:14px 0 20px;
-  max-width:22ch;
+  max-width:none;
 }
 .case-skill-tags{
   display:flex; flex-wrap:wrap; gap:8px;
@@ -695,6 +691,13 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   text-transform:uppercase;
 }
 .case-download{ text-align:left; margin-top:48px; }
+.excel-embed-wrap iframe{
+  width:100%;
+  height:640px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  display:block;
+}
 @media (max-width:860px){
   .case-sub-grid{ grid-template-columns:1fr; }
   .case-hero h1{ font-size:clamp(24px, 5vw, 32px); }
