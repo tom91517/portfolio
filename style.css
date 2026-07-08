@@ -36,12 +36,15 @@ a{color:inherit; text-decoration:none;}
 img{max-width:100%; display:block;}
 
 .eyebrow{
+  display:none;
   font-family:'IBM Plex Mono', monospace;
   font-size:12px;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--green-soft);
 }
+.hero .eyebrow,
+.cap-item .eyebrow{ display:block; }
 
 .wrap{
   max-width:1120px;
@@ -71,8 +74,8 @@ header.site-nav{
 }
 .wordmark{
   font-family:'IBM Plex Mono', monospace;
-  font-weight:500;
-  font-size:15px;
+  font-weight:600;
+  font-size:18px;
   letter-spacing:.06em;
   display:flex; align-items:center; gap:8px;
 }
@@ -217,7 +220,8 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .capabilities{
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
-  padding:48px 0;
+  padding:36px 0;
+  background:#FFFFFF;
 }
 .cap-row{
   display:grid;
@@ -242,7 +246,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- BIO ---------- */
-.bio{ padding:96px 0; border-bottom:1px solid var(--line); }
+.bio{ padding:60px 0; border-bottom:1px solid var(--line); }
 .bio-head{ max-width:60ch; margin-bottom:32px; }
 .bio-head h2{
   font-family:'Poppins', sans-serif;
@@ -253,7 +257,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 .bio-body{
   max-width:72ch;
-  color:var(--ink-soft);
+  color:var(--ink);
   font-size:15.5px;
 }
 .bio-body p{ margin:0 0 18px; }
@@ -261,7 +265,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .bio-body strong{ color:var(--ink); font-weight:600; }
 
 /* ---------- FEATURED PROJECT ---------- */
-.featured{ padding:96px 0; }
+.featured{ padding:64px 0; background:#FFFFFF; }
 .featured-head{ margin-bottom:40px; max-width:60ch; }
 .featured-head h2{
   font-family:'Poppins', sans-serif;
@@ -338,7 +342,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 
 /* ---------- ARTICLES ---------- */
 .articles{
-  padding:0 0 100px;
+  padding:0 0 64px;
 }
 .articles-head{ margin-bottom:36px; }
 .articles-head h2{
@@ -402,7 +406,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- RESUME VIEWER ---------- */
-.resume-viewer{ padding:0 0 96px; }
+.resume-viewer{ padding:0 0 64px; background:#FFFFFF; }
 .resume-embed{
   width:100%;
   height:1100px;
@@ -420,7 +424,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- CONTACT LINKS ---------- */
-.contact-links{ padding:64px 0 72px; }
+.contact-links{ padding:48px 0 56px; background:#FFFFFF; }
 .contact-links-row{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -474,7 +478,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- PROJECTS GRID ---------- */
-.projects-grid-section{ padding:8px 0 100px; }
+.projects-grid-section{ padding:8px 0 64px; background:#FFFFFF; }
 .projects-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
@@ -620,11 +624,11 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .case-tldr p{
   margin:0;
   font-size:15px;
-  color:var(--ink-soft);
+  color:var(--ink);
   line-height:1.6;
 }
-.case-body{ padding:72px 0 100px; }
-.case-section{ margin-bottom:64px; max-width:72ch; }
+.case-body{ padding:56px 0 72px; background:#FFFFFF; }
+.case-section{ margin-bottom:48px; max-width:72ch; }
 .case-section:last-child{ margin-bottom:0; }
 .case-section h2{
   font-family:'Poppins', sans-serif;
@@ -654,7 +658,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 .case-sub p{
   font-size:14.5px;
-  color:var(--ink-soft);
+  color:var(--ink);
   line-height:1.65;
   margin:0;
 }
@@ -662,7 +666,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .case-findings li{
   display:flex; gap:12px;
   font-size:14.5px;
-  color:var(--ink-soft);
+  color:var(--ink);
   line-height:1.65;
 }
 .case-findings li::before{
@@ -711,7 +715,8 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 
 /* ---------- COMING SOON ---------- */
 .coming-soon{
-  padding:96px 0;
+  padding:64px 0;
+  background:#FFFFFF;
 }
 .coming-soon-card{
   border:1px dashed var(--line);
@@ -753,7 +758,7 @@ footer{
 .footer-bottom{
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
   font-family:'IBM Plex Mono', monospace;
-  font-size:11.5px;
+  font-size:13px;
   color:rgba(245,246,240,0.6);
 }
 .footer-bottom nav{ display:flex; gap:18px; }
