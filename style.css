@@ -36,15 +36,13 @@ a{color:inherit; text-decoration:none;}
 img{max-width:100%; display:block;}
 
 .eyebrow{
-  display:none;
+  display:block;
   font-family:'IBM Plex Mono', monospace;
   font-size:12px;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--green-soft);
 }
-.hero .eyebrow,
-.cap-item .eyebrow{ display:block; }
 
 .wrap{
   max-width:1120px;
@@ -351,13 +349,6 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   letter-spacing:-0.01em;
   font-size:30px;
   margin:14px 0 0;
-}
-.article-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
 }
 .article-card{
   background:var(--card);
@@ -712,13 +703,6 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
   .case-sub-grid{ grid-template-columns:1fr; }
   .case-hero h1{ font-size:clamp(24px, 5vw, 32px); }
 }
-@media (max-width:1024px){
-  .projects-grid{ grid-template-columns:1fr 1fr; }
-}
-@media (max-width:640px){
-  .projects-grid{ grid-template-columns:1fr; }
-}
-
 /* ---------- COMING SOON ---------- */
 .coming-soon{
   padding:64px 0;
@@ -726,24 +710,7 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 
 /* ---------- ARTICLES CAROUSEL ---------- */
-.articles-carousel-section{
-  padding:64px 0;
-  background:#FFFFFF;
-}
-.carousel-header{
-  display:flex; align-items:center; justify-content:space-between;
-  margin-bottom:24px;
-}
-.carousel-header h2,
-.articles-list-section h2{
-  font-family:'Poppins', sans-serif;
-  font-weight:700;
-  font-size:24px;
-  letter-spacing:-0.01em;
-  margin:0;
-  color:var(--ink);
-}
-.carousel-nav{ display:flex; gap:8px; }
+.carousel-shell{ position:relative; }
 .carousel-btn{
   width:36px; height:36px;
   border:1px solid var(--line);
@@ -759,6 +726,15 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 }
 .carousel-btn:hover:not(:disabled){ border-color:var(--green); color:var(--green); }
 .carousel-btn:disabled{ opacity:.3; cursor:default; }
+.carousel-shell .carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  box-shadow:0 4px 14px rgba(22,32,26,0.12);
+}
+.carousel-shell .carousel-btn-prev{ left:-18px; }
+.carousel-shell .carousel-btn-next{ right:-18px; }
 .carousel-viewport{ overflow:hidden; }
 .carousel-track{
   display:flex;
@@ -771,7 +747,14 @@ nav.links a.active{ color:var(--green); border-color:var(--green); }
 .articles-list-section{
   padding:64px 0;
 }
-.articles-list-section h2{ margin-bottom:24px; }
+.articles-list-section h2{
+  font-family:'Poppins', sans-serif;
+  font-weight:700;
+  font-size:24px;
+  letter-spacing:-0.01em;
+  margin:0 0 24px;
+  color:var(--ink);
+}
 .article-list{
   list-style:none; padding:0; margin:0;
   border-top:1px solid var(--line);
@@ -857,6 +840,42 @@ footer{
 .footer-bottom nav{ display:flex; gap:18px; }
 .footer-bottom nav a:hover{ color:var(--paper); }
 
+/* ---------- DATA TABLE (article prose tables) ---------- */
+.table-wrap{ overflow-x:auto; margin:28px 0; }
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+}
+.data-table th{
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-align:right;
+  padding:10px 16px 8px;
+  border-bottom:1.5px solid var(--line);
+}
+.data-table th:first-child{ text-align:left; }
+.data-table td{
+  padding:12px 16px;
+  border-bottom:1px solid var(--line-soft);
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink);
+}
+.data-table td:first-child{
+  text-align:left;
+  font-family:'IBM Plex Sans', sans-serif;
+  font-size:14.5px;
+}
+.data-table tr:last-child td{
+  border-bottom:none;
+  border-top:1.5px solid var(--green);
+  font-weight:600;
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:860px){
   .hero-grid{ grid-template-columns:1fr; }
@@ -865,7 +884,9 @@ footer{
   .cap-item:first-child{ border-top:none; margin-top:0; padding-top:0; }
   .project-card{ grid-template-columns:1fr; }
   .project-viz{ border-left:none; border-top:1px solid var(--line); }
-  .article-grid{ grid-template-columns:1fr; }
+  .projects-grid{ grid-template-columns:1fr; }
+  .carousel-shell .carousel-btn-prev{ left:-6px; }
+  .carousel-shell .carousel-btn-next{ right:-6px; }
   .wrap{ padding:0 20px; }
   nav.links{ gap:16px; }
   .wordmark{ font-size:12.5px; letter-spacing:.03em; }

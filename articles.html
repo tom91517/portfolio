@@ -38,58 +38,6 @@
   </div>
 </section>
 
-<section class="articles-carousel-section">
-  <div class="wrap">
-    <div class="carousel-header">
-      <h2>Recent Articles</h2>
-      <div class="carousel-nav">
-        <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
-        <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
-      </div>
-    </div>
-    <div class="carousel-viewport">
-      <div class="carousel-track" id="carousel-track">
-
-        <div class="article-card carousel-card">
-          <span class="date">Coming Soon</span>
-          <h3>Coming Soon 1</h3>
-          <p>Article preview coming soon.</p>
-          <a href="article-1.html" class="read">Read Article →</a>
-        </div>
-
-        <div class="article-card carousel-card">
-          <span class="date">Coming Soon</span>
-          <h3>Coming Soon 2</h3>
-          <p>Article preview coming soon.</p>
-          <a href="article-2.html" class="read">Read Article →</a>
-        </div>
-
-        <div class="article-card carousel-card">
-          <span class="date">Coming Soon</span>
-          <h3>Coming Soon 3</h3>
-          <p>Article preview coming soon.</p>
-          <a href="article-3.html" class="read">Read Article →</a>
-        </div>
-
-        <div class="article-card carousel-card">
-          <span class="date">Coming Soon</span>
-          <h3>Coming Soon 4</h3>
-          <p>Article preview coming soon.</p>
-          <a href="article-4.html" class="read">Read Article →</a>
-        </div>
-
-        <div class="article-card carousel-card">
-          <span class="date">Coming Soon</span>
-          <h3>Coming Soon 5</h3>
-          <p>Article preview coming soon.</p>
-          <a href="article-5.html" class="read">Read Article →</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="articles-list-section">
   <div class="wrap">
     <h2>All Articles</h2>
@@ -103,9 +51,10 @@
       </li>
       <li class="article-list-item">
         <div class="article-list-meta">
-          <span class="article-list-date"></span>
-          <span class="article-list-title article-list-title--muted">Coming Soon</span>
+          <span class="article-list-date">JUL 2026</span>
+          <a href="article-2.html" class="article-list-title">What the Cash Balance Hides: How Texas Instruments Actually Funded Its Fab Expansion</a>
         </div>
+        <a href="article-2.html" class="article-list-link">Read Article →</a>
       </li>
     </ul>
   </div>
@@ -127,52 +76,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-(function(){
-  var viewport = document.querySelector('.carousel-viewport');
-  var track = document.getElementById('carousel-track');
-  var cards = track.querySelectorAll('.carousel-card');
-  var prevBtn = document.getElementById('carousel-prev');
-  var nextBtn = document.getElementById('carousel-next');
-  var GAP = 24;
-  var VISIBLE = 3;
-  var MAX = cards.length - VISIBLE;
-  var pos = 0;
-
-  function setWidths(){
-    var w = (viewport.offsetWidth - GAP * (VISIBLE - 1)) / VISIBLE;
-    for(var i = 0; i < cards.length; i++){
-      cards[i].style.width = w + 'px';
-    }
-  }
-
-  function step(){
-    return cards[0].offsetWidth + GAP;
-  }
-
-  function update(){
-    track.style.transform = 'translateX(-' + (pos * step()) + 'px)';
-    prevBtn.disabled = pos === 0;
-    nextBtn.disabled = pos === MAX;
-  }
-
-  setWidths();
-  update();
-
-  window.addEventListener('resize', function(){
-    setWidths();
-    update();
-  });
-
-  prevBtn.addEventListener('click', function(){
-    if(pos > 0){ pos--; update(); }
-  });
-  nextBtn.addEventListener('click', function(){
-    if(pos < MAX){ pos++; update(); }
-  });
-})();
-</script>
 
 </body>
 </html>

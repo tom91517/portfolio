@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TXN Three-Statement Model &amp; DCF Valuation — Jin-Tang Shen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F4D3A'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F4D3A'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a class="wordmark" href="index.html">
+      <span class="mark"><span></span><span></span><span></span><span></span></span>
+      JIN-TANG SHEN (TOM)
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="articles.html">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-main">
+
+  <!-- HERO -->
+  <section class="case-hero">
+    <div class="wrap">
+      <a href="projects.html" class="case-back">← Back to Projects</a>
+      <span class="eyebrow">Finance · Case Study</span>
+      <h1>TXN Three-Statement Model &amp; DCF Valuation</h1>
+      <div class="case-skill-tags">
+        <span>Excel</span>
+        <span>Three-Statement Model</span>
+        <span>DCF</span>
+        <span>CAPM</span>
+        <span>Valuation</span>
+      </div>
+      <div class="case-tldr">
+        <div class="tldr-label">TL;DR</div>
+        <p>A driver-based three-statement model and unlevered DCF valuation of Texas Instruments (TXN), built from 10-K historical data (FY2023–FY2025) with a five-year forecast to FY2030. Intrinsic value falls below current market price across the full sensitivity range, and the model surfaced that TXN's fab expansion was not self-funded from operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="case-body">
+    <div class="wrap">
+
+      <!-- Business Scenario -->
+      <div class="case-section" style="max-width:none;">
+        <h2>Business Scenario</h2>
+        <div class="case-sub-grid">
+          <div class="case-sub">
+            <h3>Challenge</h3>
+            <p>Build a complete three-statement model of Texas Instruments using 10-K historical data, then forecast FY2026–FY2030 with explicit economic drivers anchored to real assumptions — not placeholders — and value the company using a rigorous unlevered DCF framework.</p>
+          </div>
+          <div class="case-sub">
+            <h3>Solution</h3>
+            <p>Linked income statement, balance sheet, and cash flow statement with every projection traced to a driver: revenue growth from analyst consensus, margins at historical norms, capex stepped down to reflect the tail end of TXN's fab-expansion cycle, and working capital from day-count assumptions. Cash is derived as the balance sheet plug and independently verified against the cash flow statement. Valuation uses CAPM cost of equity, market-value WACC, and an unlevered DCF with a two-dimensional sensitivity table across WACC and terminal growth rate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Findings -->
+      <div class="case-section">
+        <h2>Key Findings</h2>
+        <ul class="case-findings">
+          <li>Across the entire WACC × terminal growth sensitivity range, intrinsic value falls below TXN's current market price — the market is pricing in a longer high-growth phase than a standard five-year perpetuity model captures.</li>
+          <li>TXN's fab expansion was not self-funded from operations. The linked statements surfaced that the gap between operating cash flow and the combined demands of capex, dividends, and buybacks was covered by drawing down short-term investments and issuing debt — a finding the income statement alone never shows.</li>
+          <li>Both model integrity checks pass: the cash balance derived as the balance sheet plug and the cash flow statement ending balance agree across all five forecast years.</li>
+          <li>Assuming flat buybacks at the recent run rate drove cash negative in early forecasts, demonstrating that an individually plausible assumption can still be unaffordable when all other assumptions must hold simultaneously — the core discipline a linked model enforces.</li>
+        </ul>
+      </div>
+
+      <!-- Model Preview -->
+      <div class="case-section" style="max-width:none;">
+        <h2>Model Preview</h2>
+        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 20px;">Full three-statement model with drivers, five-year forecast, and DCF valuation — navigate between sheets to explore the income statement, balance sheet, cash flow statement, and WACC sensitivity table.</p>
+        <div class="excel-embed-wrap">
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSNmE2pcMcxPdzcP2wTSA7vXfthH89Nem9O5Fv8FRvwKr_OxippGLiRK8VDDn2UQzpGjc9rucijMaIJ/pubhtml?widget=true&amp;headers=false" frameborder="0" title="TXN Three-Statement Model &amp; DCF Valuation"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Jin-Tang Shen (Tom) — Portfolio</span>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="articles.html">Articles</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
