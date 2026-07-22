@@ -1,18 +1,18 @@
 :root{
-  --paper:#F5F6F0;
-  --paper-alt:#ECE9DE;
-  --card:#FBFAF6;
-  --ink:#16201A;
-  --ink-soft:#54594F;
+  --paper:#F8FAFC;
+  --paper-alt:#F1F5F9;
+  --card:#FFFFFF;
+  --ink:#0F172A;
+  --ink-soft:#475569;
   --green:#1F4D3A;
   --green-soft:#2E6B4F;
-  --green-tint:#E4ECE6;
+  --green-tint:#E8F2EC;
   --amber:#B6822A;
-  --amber-tint:#F3E9D4;
+  --amber-tint:#FEF0D9;
   --brick:#9C4632;
-  --brick-tint:#F1E1DA;
-  --line:#D9D5C5;
-  --line-soft:#E6E3D6;
+  --brick-tint:#FDEAE4;
+  --line:#E2E8F0;
+  --line-soft:#F1F5F9;
   --radius:3px;
 }
 
@@ -66,7 +66,7 @@ a:focus-visible, button:focus-visible{
 /* ---------- NAV ---------- */
 header.site-nav{
   position:sticky; top:0; z-index:50;
-  background:rgba(245,246,240,0.92);
+  background:rgba(248,250,252,0.92);
   backdrop-filter:saturate(140%) blur(6px);
   border-bottom:1px solid var(--line);
 }
