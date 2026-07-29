@@ -934,24 +934,3 @@ footer{
   nav.links a{ padding:10px 4px; }
   .wordmark{ font-size:13px; letter-spacing:.03em; }
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --paper:#111827;
-    --paper-alt:#1A2535;
-    --card:#1E293B;
-    --ink:#F1F5F9;
-    --ink-soft:#94A3B8;
-    --line:#334155;
-    --line-soft:#1A2535;
-    --green-tint:rgba(31,77,58,0.3);
-    --amber-tint:rgba(182,130,42,0.2);
-    --brick-tint:rgba(156,70,50,0.2);
-    --shadow-sm:0 2px 12px rgba(0,0,0,0.3);
-    --shadow-md:0 6px 20px rgba(0,0,0,0.4);
-    --shadow-lg:0 18px 40px -22px rgba(0,0,0,0.55);
-  }
-  header.site-nav{ background:rgba(17,24,39,0.92); }
-  .btn-primary{ color:#F8FAFC; }
-  .footer-bottom{ color:rgba(245,246,240,0.72); }
-  .footer-bottom nav a:hover{ color:#F8FAFC; }
-}
