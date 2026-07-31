@@ -81,7 +81,13 @@ header.site-nav{
   position:sticky; top:0; z-index:50;
   background:rgba(244,246,249,0.92);
   backdrop-filter:saturate(140%) blur(6px);
-  border-bottom:1px solid var(--line);
+  border-bottom:none;
+}
+header.site-nav::after{
+  content:'';
+  display:block;
+  height:2px;
+  background:linear-gradient(to right, var(--green) 0%, var(--amber) 100%);
 }
 .nav-row{
   display:flex; align-items:center; justify-content:space-between;
