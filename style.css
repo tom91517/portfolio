@@ -168,13 +168,14 @@ nav.links a.nav-cta:hover{
 .hero h1{
   font-family:'Inter', sans-serif;
   font-weight:600;
-  letter-spacing:-0.01em;
+  letter-spacing:-0.02em;
   font-size:clamp(32px, 4.2vw, 50px);
-  line-height:1.16;
+  line-height:1.05;
   margin:18px 0 22px;
   color:var(--ink);
 }
 .hero h1 em{ font-style:normal; color:var(--green); font-weight:800;}
+.hero .eyebrow{ text-transform:none; letter-spacing:.04em; }
 .hero p.lede{
   font-size:17px;
   color:var(--ink-soft);
