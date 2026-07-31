@@ -90,8 +90,8 @@ header.site-nav{
 .wordmark{
   font-family:'IBM Plex Mono', monospace;
   font-weight:600;
-  font-size:17px;
-  letter-spacing:.06em;
+  font-size:19px;
+  letter-spacing:.02em;
   display:flex; align-items:center; gap:8px;
 }
 .wordmark .mark{
