@@ -92,7 +92,17 @@ header.site-nav{
   font-weight:600;
   font-size:19px;
   letter-spacing:.02em;
-  display:flex; align-items:center; gap:8px;
+  display:flex; align-items:center; gap:10px;
+}
+.wordmark-text{ display:flex; flex-direction:column; gap:3px; }
+.wordmark-sub{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:10px;
+  font-weight:400;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  line-height:1;
 }
 .wordmark .mark{
   width:14px; height:14px;
