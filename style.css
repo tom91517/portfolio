@@ -962,7 +962,7 @@ footer{
   font-size:16px;
   font-weight:600;
   letter-spacing:.02em;
-  color:var(--ink);
+  color:var(--green);
   background:var(--card);
 }
 .fl-row{
@@ -1025,11 +1025,12 @@ footer{
   font-weight:600;
   letter-spacing:.06em;
   color:var(--green);
-  display:flex;
+  display:inline-flex;
   align-items:center;
   gap:6px;
+  transition:transform .2s ease, color .15s ease;
 }
-.fl-footer a:hover{ color:var(--green-soft); }
+.fl-footer a:hover{ color:var(--green-soft); transform:translateX(4px); }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1024px){
