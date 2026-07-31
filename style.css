@@ -125,6 +125,7 @@ nav.links a.nav-cta{
   padding:11px 26px;
   border-radius:20px;
   font-weight:600;
+  order:99;
   margin-left:auto;
 }
 nav.links a.nav-cta,
