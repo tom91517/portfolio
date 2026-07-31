@@ -122,15 +122,16 @@ nav.links a.active{ color:var(--green); border-bottom:2px solid var(--green); pa
 nav.links a.nav-cta{
   background:var(--green);
   color:#ffffff;
-  padding:7px 18px;
+  padding:11px 26px;
   border-radius:20px;
   font-weight:600;
+  margin-left:auto;
 }
 nav.links a.nav-cta,
 nav.links a.nav-cta.active{
   color:#ffffff;
   border-bottom:none;
-  padding-bottom:7px;
+  padding-bottom:11px;
 }
 nav.links a.nav-cta:hover{
   color:#ffffff;
