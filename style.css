@@ -171,24 +171,44 @@ nav.links a.nav-cta:hover{
   letter-spacing:-0.02em;
   font-size:clamp(32px, 4.2vw, 50px);
   line-height:1.05;
-  margin:18px 0 22px;
+  margin:12px 0 28px;
   color:var(--ink);
 }
 .hero h1 em{ font-style:normal; color:var(--green); font-weight:800;}
-.hero .eyebrow{ text-transform:none; letter-spacing:.04em; }
+.hero .eyebrow{ display:none; }
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#F0F4F8;
+  border:1px solid var(--line);
+  border-radius:9999px;
+  padding:6px 14px 6px 10px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:.04em;
+  color:var(--ink-soft);
+  margin-bottom:20px;
+}
+.hero-badge-dot{
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#22C55E;
+  flex:none;
+}
 .hero p.lede{
   font-size:17px;
   color:var(--ink-soft);
   max-width:46ch;
-  margin:0 0 32px;
+  margin:0 0 40px;
 }
 .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
 .btn{
   font-family:'Inter', sans-serif;
   font-weight:700;
   font-size:13px;
-  letter-spacing:.02em;
-  text-transform:uppercase;
+  letter-spacing:.01em;
   padding:15px 28px;
   border-radius:var(--radius);
   display:inline-block;
