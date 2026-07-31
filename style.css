@@ -177,7 +177,7 @@ nav.links a.nav-cta:hover{
   letter-spacing:-0.02em;
   font-size:clamp(32px, 4.2vw, 50px);
   line-height:1.05;
-  margin:10px 0 20px;
+  margin:0 0 20px;
   color:var(--ink);
 }
 .hero h1 em{ font-style:normal; color:var(--green); font-weight:800;}
