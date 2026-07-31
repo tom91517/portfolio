@@ -58,7 +58,8 @@ img{max-width:100%; display:block;}
 .hero .eyebrow,
 .cap-item .eyebrow,
 .page-header .eyebrow,
-.case-hero .eyebrow{ display:block; }
+.case-hero .eyebrow,
+.project-embed-head .eyebrow{ display:block; }
 
 .wrap{
   max-width:1120px;
@@ -525,7 +526,7 @@ nav.links a.active{ color:var(--green); border-bottom:2px solid var(--green); pa
 .projects-grid-section{ padding:48px 0; background:var(--card); }
 .projects-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:28px;
 }
 .project-tile{
@@ -916,6 +917,45 @@ footer{
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1024px){
   .hero-grid{ gap:32px; }
+  .projects-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* ---------- PROJECT EMBED ---------- */
+.project-embed-section{
+  padding:48px 0;
+  border-top:1px solid var(--line);
+}
+.project-embed-head{
+  margin-bottom:32px;
+}
+.project-embed-head h2{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  font-size:32px;
+  margin:14px 0 10px;
+  color:var(--ink);
+}
+.project-embed-head p{
+  color:var(--ink-soft);
+  font-size:15px;
+  max-width:60ch;
+  margin:0;
+}
+.powerbi-embed{
+  position:relative;
+  padding-bottom:62.25%;
+  height:0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--paper-alt);
+}
+.powerbi-embed iframe{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  border:0;
 }
 @media (max-width:860px){
   .hero-grid{ grid-template-columns:1fr; }
