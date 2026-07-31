@@ -118,11 +118,11 @@ nav.links a{
   transition:color .15s ease, border-color .15s ease;
 }
 nav.links a:hover{ color:var(--green); }
-nav.links a.active{ color:var(--green); border-bottom:2px solid var(--green); padding-bottom:3px; }
+nav.links a.active{ color:var(--green); border-bottom:2px solid var(--green); padding-bottom:1px; }
 nav.links a.nav-cta{
   background:var(--green);
   color:#ffffff;
-  padding:11px 26px;
+  padding:14px 30px;
   border-radius:20px;
   font-weight:600;
   order:99;
@@ -132,7 +132,7 @@ nav.links a.nav-cta,
 nav.links a.nav-cta.active{
   color:#ffffff;
   border-bottom:none;
-  padding-bottom:11px;
+  padding-bottom:14px;
 }
 nav.links a.nav-cta:hover{
   color:#ffffff;
