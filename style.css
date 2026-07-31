@@ -979,12 +979,12 @@ footer{
 .fl-row:hover{ background:var(--green-tint); }
 .fl-num{
   font-family:'IBM Plex Mono', monospace;
-  font-size:12px;
+  font-size:15px;
   font-weight:600;
   color:var(--green);
-  letter-spacing:.06em;
+  letter-spacing:.04em;
   flex:none;
-  width:24px;
+  width:28px;
 }
 .fl-body{ flex:1; min-width:0; }
 .fl-title{
@@ -1007,7 +1007,7 @@ footer{
 }
 .fl-arrow{
   font-size:15px;
-  color:var(--line);
+  color:var(--ink-soft);
   flex:none;
   transition:transform .15s ease, color .15s ease;
 }
