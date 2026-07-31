@@ -109,9 +109,8 @@ header.site-nav{
 nav.links{ display:flex; gap:28px; flex-wrap:wrap; align-items:stretch; }
 nav.links a{
   font-family:'IBM Plex Mono', monospace;
-  font-size:12px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
+  font-size:13px;
+  letter-spacing:.03em;
   color:var(--ink-soft);
   padding-bottom:0;
   border-bottom:2px solid transparent;
