@@ -163,7 +163,7 @@ nav.links a.nav-cta:hover{
   display:grid;
   grid-template-columns:1.05fr 0.95fr;
   gap:56px;
-  align-items:center;
+  align-items:start;
 }
 .hero h1{
   font-family:'Inter', sans-serif;
@@ -171,7 +171,7 @@ nav.links a.nav-cta:hover{
   letter-spacing:-0.02em;
   font-size:clamp(32px, 4.2vw, 50px);
   line-height:1.05;
-  margin:12px 0 28px;
+  margin:10px 0 20px;
   color:var(--ink);
 }
 .hero h1 em{ font-style:normal; color:var(--green); font-weight:800;}
@@ -189,7 +189,7 @@ nav.links a.nav-cta:hover{
   font-size:12px;
   letter-spacing:.04em;
   color:var(--ink-soft);
-  margin-bottom:20px;
+  margin-bottom:14px;
 }
 .hero-badge-dot{
   width:7px; height:7px;
@@ -201,7 +201,7 @@ nav.links a.nav-cta:hover{
   font-size:17px;
   color:var(--ink-soft);
   max-width:46ch;
-  margin:0 0 40px;
+  margin:0 0 28px;
 }
 .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
 .btn{
