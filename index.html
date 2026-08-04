@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F4D3A'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F4D3A'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F3864'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F3864'/%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -67,7 +67,7 @@
         </div>
         <span class="fl-arrow">→</span>
       </a>
-      <a href="projects.html#powerbi-dashboard" class="fl-row">
+      <a href="powerbi.html" class="fl-row">
         <span class="fl-num">03</span>
         <div class="fl-body">
           <div class="fl-title">Retail Financial Performance Analytics</div>
@@ -76,7 +76,7 @@
         <span class="fl-arrow">→</span>
       </a>
       <div class="fl-footer">
-        <a href="projects.html">View All Projects →</a>
+        <a href="projects.html">View All Projects <span class="fl-footer-arrow">→</span></a>
       </div>
     </div>
   </div>
@@ -84,30 +84,225 @@
 
 <section class="capabilities">
   <div class="wrap">
-    <div class="cap-row">
+    <div class="showcase-grid">
 
-      <div class="cap-card">
-        <span class="eyebrow">Modeling</span>
-        <p class="cap-question">"How much is this company worth, and what actually drives it?"</p>
-        <h3>Three-Statement Model &amp; DCF Valuation</h3>
-        <p class="cap-desc">[Placeholder: briefly describe your modeling approach, what data you used, and what insight it surfaced — e.g. "Built a driver-based three-statement model for TXN using 10-K filings, then ran a WACC-discounted DCF to arrive at an intrinsic value…"]</p>
-        <a href="TXN_DCF.html" class="cap-link">See the model →</a>
+      <div class="showcase-stack-wrap">
+        <div class="wf-scene">
+
+          <!-- subtle diagonal flow line -->
+          <svg class="wf-connectors" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <filter id="wfGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="1.5"/>
+              </filter>
+            </defs>
+            <path d="M 3 56 C 28 62 62 67 97 72"
+                  stroke="rgba(59,130,246,0.22)" stroke-width="4"
+                  fill="none" filter="url(#wfGlow)"/>
+            <path d="M 3 56 C 28 62 62 67 97 72"
+                  stroke="rgba(96,165,250,0.2)" stroke-width="1"
+                  stroke-dasharray="3.5 7"
+                  fill="none"/>
+          </svg>
+
+          <!-- Window 1: SQL Editor -->
+          <div class="wf-win wf-win-sql">
+            <div class="wf-titlebar wf-tb-sql">
+              <div class="wf-dots">
+                <span class="wf-dot wfd-r"></span>
+                <span class="wf-dot wfd-y"></span>
+                <span class="wf-dot wfd-g"></span>
+              </div>
+              <span class="wf-fname wf-fname-sql">budget_variance.sql</span>
+            </div>
+            <div class="wf-editor">
+<span class="wfc"><span class="wfc-kw">SELECT</span></span>
+<span class="wfc">  d.<span class="wfc-col">department_name</span>,</span>
+<span class="wfc">  <span class="wfc-fn">SUM</span>(b.<span class="wfc-col">amount</span>)            <span class="wfc-kw">AS</span> <span class="wfc-col">budget</span>,</span>
+<span class="wfc">  <span class="wfc-fn">SUM</span>(a.<span class="wfc-col">amount</span>)            <span class="wfc-kw">AS</span> <span class="wfc-col">actual</span>,</span>
+<span class="wfc">  <span class="wfc-fn">SUM</span>(a.<span class="wfc-col">amount</span> - b.<span class="wfc-col">amount</span>)  <span class="wfc-kw">AS</span> <span class="wfc-col">variance</span>,</span>
+<span class="wfc">  <span class="wfc-fn">ROUND</span>(</span>
+<span class="wfc">    (<span class="wfc-fn">SUM</span>(a.<span class="wfc-col">amount</span>) - <span class="wfc-fn">SUM</span>(b.<span class="wfc-col">amount</span>))</span>
+<span class="wfc">    / <span class="wfc-fn">SUM</span>(b.<span class="wfc-col">amount</span>) * <span class="wfc-num">100</span>, <span class="wfc-num">1</span></span>
+<span class="wfc">  )                        <span class="wfc-kw">AS</span> <span class="wfc-col">var_pct</span></span>
+<span class="wfc"><span class="wfc-kw">FROM</span>   <span class="wfc-tbl">budget_plan</span>  b</span>
+<span class="wfc">  <span class="wfc-kw">JOIN</span> <span class="wfc-tbl">actuals</span>      a <span class="wfc-kw">USING</span> (<span class="wfc-col">dept_id</span>, <span class="wfc-col">period</span>)</span>
+<span class="wfc">  <span class="wfc-kw">JOIN</span> <span class="wfc-tbl">departments</span>  d <span class="wfc-kw">USING</span> (<span class="wfc-col">dept_id</span>)</span>
+<span class="wfc"><span class="wfc-kw">WHERE</span>  b.<span class="wfc-col">period</span> = <span class="wfc-str">'2025-Q4'</span></span>
+<span class="wfc"><span class="wfc-kw">GROUP</span>  <span class="wfc-kw">BY</span> d.<span class="wfc-col">department_name</span></span>
+<span class="wfc"><span class="wfc-kw">ORDER</span>  <span class="wfc-kw">BY</span> variance <span class="wfc-kw">DESC</span>;</span>
+<span class="wfc wfc-cmt">-- 4 rows · 11ms</span>
+            </div>
+          </div>
+
+          <!-- Window 2: Excel BvA Model -->
+          <div class="wf-win wf-win-excel">
+            <div class="wf-titlebar wf-tb-xlsx">
+              <div class="wf-dots">
+                <span class="wf-dot wfd-r"></span>
+                <span class="wf-dot wfd-y"></span>
+                <span class="wf-dot wfd-g"></span>
+              </div>
+              <span class="wf-fname wf-fname-xlsx">BvA_2025Q4.xlsx</span>
+            </div>
+            <div class="wf-fbar">
+              <span class="wf-fbar-cell">E8</span>
+              <span class="wf-fbar-formula">=IFERROR((D8-C8)/C8,"")</span>
+            </div>
+            <table class="wf-grid" aria-label="Budget vs Actual">
+              <colgroup>
+                <col style="width:30%">
+                <col style="width:17%">
+                <col style="width:17%">
+                <col style="width:18%">
+                <col style="width:18%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Department</th>
+                  <th>Budget</th>
+                  <th>Actual</th>
+                  <th>Variance</th>
+                  <th>Var %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sales &amp; Mktg</td>
+                  <td class="num">4,750</td>
+                  <td class="num">6,128</td>
+                  <td class="wf-bad">+1,378</td>
+                  <td class="wf-bad">+29.0%</td>
+                </tr>
+                <tr>
+                  <td>Research &amp; Dev</td>
+                  <td class="num">3,240</td>
+                  <td class="num">2,630</td>
+                  <td class="wf-good">(610)</td>
+                  <td class="wf-good">(18.8%)</td>
+                </tr>
+                <tr>
+                  <td>Operations</td>
+                  <td class="num">5,180</td>
+                  <td class="num">5,312</td>
+                  <td class="wf-bad">+132</td>
+                  <td class="wf-bad">+2.5%</td>
+                </tr>
+                <tr>
+                  <td>G&amp;A</td>
+                  <td class="num">1,380</td>
+                  <td class="num">1,356</td>
+                  <td class="wf-good">(24)</td>
+                  <td class="wf-good">(1.7%)</td>
+                </tr>
+                <tr class="wf-total">
+                  <td>Total</td>
+                  <td class="num">14,550</td>
+                  <td class="num">15,426</td>
+                  <td class="wf-bad">+876</td>
+                  <td class="wf-bad">+6.0%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Window 3: Power BI Dashboard -->
+          <div class="wf-win wf-win-pbi">
+            <div class="wf-titlebar wf-tb-pbi">
+              <div class="wf-dots">
+                <span class="wf-dot wfd-r"></span>
+                <span class="wf-dot wfd-y"></span>
+                <span class="wf-dot wfd-g"></span>
+              </div>
+              <span class="wf-fname wf-fname-pbi">Executive Overview</span>
+            </div>
+            <div class="wf-dash">
+              <div class="wf-kpi-row">
+                <div class="wf-kpi">
+                  <span class="wf-kpi-lbl">Revenue</span>
+                  <span class="wf-kpi-val">$4.2M</span>
+                  <span class="wf-kpi-dt wf-kpi-up">▲ 12.4% vs PY</span>
+                </div>
+                <div class="wf-kpi">
+                  <span class="wf-kpi-lbl">Gross Margin</span>
+                  <span class="wf-kpi-val">41.3%</span>
+                  <span class="wf-kpi-dt wf-kpi-down">▼ 1.8pp vs PY</span>
+                </div>
+                <div class="wf-kpi">
+                  <span class="wf-kpi-lbl">EBITDA</span>
+                  <span class="wf-kpi-val">$680K</span>
+                  <span class="wf-kpi-dt wf-kpi-up">▲ 8.6% vs PY</span>
+                </div>
+              </div>
+              <div class="wf-chart-box">
+                <div class="wf-chart-ttl">Revenue by Quarter ($K)</div>
+                <svg viewBox="0 0 280 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:52px">
+                  <line x1="0" y1="45" x2="280" y2="45" stroke="#E2E8F0" stroke-width="0.5"/>
+                  <line x1="0" y1="30" x2="280" y2="30" stroke="#E2E8F0" stroke-width="0.5"/>
+                  <line x1="0" y1="15" x2="280" y2="15" stroke="#E2E8F0" stroke-width="0.5"/>
+                  <rect x="10"  y="16" width="40" height="29" rx="2" fill="#3B82F6" opacity="0.55"/>
+                  <rect x="82"  y="14" width="40" height="31" rx="2" fill="#3B82F6" opacity="0.65"/>
+                  <rect x="154" y="11" width="40" height="34" rx="2" fill="#3B82F6" opacity="0.78"/>
+                  <rect x="226" y="5"  width="40" height="40" rx="2" fill="#2563EB"/>
+                  <polyline points="30,16 102,14 174,11 246,5"
+                            fill="none" stroke="#93C5FD" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="30"  cy="16" r="2.5" fill="#60A5FA"/>
+                  <circle cx="102" cy="14" r="2.5" fill="#60A5FA"/>
+                  <circle cx="174" cy="11" r="2.5" fill="#60A5FA"/>
+                  <circle cx="246" cy="5"  r="3"   fill="#2563EB"/>
+                  <text x="30"  y="51" text-anchor="middle" fill="#94A3B8" font-family="IBM Plex Mono,monospace" font-size="7">Q1</text>
+                  <text x="102" y="51" text-anchor="middle" fill="#94A3B8" font-family="IBM Plex Mono,monospace" font-size="7">Q2</text>
+                  <text x="174" y="51" text-anchor="middle" fill="#94A3B8" font-family="IBM Plex Mono,monospace" font-size="7">Q3</text>
+                  <text x="246" y="51" text-anchor="middle" fill="#94A3B8" font-family="IBM Plex Mono,monospace" font-size="7">Q4</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- flow labels -->
+          <div class="wf-lbl wf-lbl-top" aria-hidden="true">
+            <span class="wf-lbl-dot"></span>ERP / Financial Database
+          </div>
+          <div class="wf-lbl wf-lbl-bot" aria-hidden="true">
+            Executive Insights<span class="wf-lbl-dot"></span>
+          </div>
+
+        </div>
       </div>
 
-      <div class="cap-card">
-        <span class="eyebrow">Variance Analysis</span>
-        <p class="cap-question">"Why did we miss budget — and exactly where did it happen?"</p>
-        <h3>Budget vs. Actual (BvA)</h3>
-        <p class="cap-desc">[Placeholder: describe your BvA build — e.g. "Four-scenario variance workbook for a fictional $50M ARR SaaS company. S&M overspent by $1.38M; R&D underspent but not for a good reason…"]</p>
-        <a href="NorthBeam_BvA.html" class="cap-link">See the analysis →</a>
-      </div>
-
-      <div class="cap-card">
-        <span class="eyebrow">Dashboards</span>
-        <p class="cap-question">"Can leadership see the right number before the meeting starts?"</p>
-        <h3>Power BI Reporting</h3>
-        <p class="cap-desc">[Placeholder: describe your Power BI build — e.g. "Interactive Retail dashboard covering sales performance, profit margins by category, and regional breakdowns — published to Power BI Service…"]</p>
-        <a href="projects.html#powerbi-dashboard" class="cap-link">See the dashboard →</a>
+      <div class="showcase-copy">
+        <div class="showcase-badges">
+          <div class="tech-badge">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0.5" y="9" width="3" height="4.5" rx="0.6" fill="#F2C811"/>
+              <rect x="5.5" y="5.5" width="3" height="8" rx="0.6" fill="#F2C811"/>
+              <rect x="10.5" y="1.5" width="3" height="12" rx="0.6" fill="#F2C811"/>
+            </svg>
+            <span>Power BI</span>
+          </div>
+          <div class="tech-badge">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <ellipse cx="7" cy="3.5" rx="5" ry="2" fill="#4169E1"/>
+              <path d="M2 3.5v7c0 1.1 2.24 2 5 2s5-.9 5-2v-7" fill="none" stroke="#4169E1" stroke-width="1.4"/>
+              <path d="M2 7.5c0 1.1 2.24 2 5 2s5-.9 5-2" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+            </svg>
+            <span>SQL</span>
+          </div>
+          <div class="tech-badge">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="13" height="13" rx="2.5" fill="#217346"/>
+              <path d="M3.5 3.5L7 7l3.5-3.5M3.5 10.5L7 7l3.5 3.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Excel</span>
+          </div>
+        </div>
+        <h2 class="showcase-h2">Modeling, querying, visualizing financial data.</h2>
+        <p class="showcase-desc">I turn raw financial data into models, queries, and dashboards that help teams see what's actually happening in the business.</p>
+        <ul class="showcase-list">
+          <li>Financial modeling, valuation, and variance analysis</li>
+          <li>Querying and structuring relational data for financial reporting</li>
+          <li>Interactive dashboards and DAX-driven KPI analysis</li>
+        </ul>
       </div>
 
     </div>
@@ -116,89 +311,184 @@
 
 <section class="bio">
   <div class="wrap">
-    <div class="bio-head">
-      <span class="eyebrow">Why This Site Exists</span>
-      <h2>I'm closing the experience gap by building the work, not just listing it.</h2>
-    </div>
-    <div class="bio-body">
-      <p>I'm finishing my <strong>Master of Science in Finance</strong> at the University of Arizona this December. I built this site to show what I can actually do, not just what I've studied.</p>
-      <p>Beyond the classroom, I've been teaching myself Power BI and SQL, and building projects from scratch: a full Budget vs. Actual variance workbook, a three-statement model built from real company filings, and dashboards designed the way a finance team would actually use them. Every project here started as something I genuinely couldn't do yet.</p>
-    </div>
-    <div class="bio-cta">
-      <a href="projects.html" class="bio-cta-link">See the projects →</a>
-    </div>
-  </div>
-</section>
+    <div class="bio-grid">
 
-<section class="featured">
-  <div class="wrap">
-    <div class="featured-head">
-      <span class="eyebrow">Flagship Project</span>
-      <h2>NorthBeam Analytics — Budget vs. Actual</h2>
-      <p>A full FP&A variance model built for a fictional $50M ARR B2B SaaS company: four variance scenarios, conditional formatting, and a key-variance commentary table.</p>
-    </div>
-
-    <div class="project-card">
-      <div class="project-copy">
-        <span class="tags">EXCEL · VARIANCE ANALYSIS · FP&amp;A</span>
-        <h3>Budget vs. Actual — four variance scenarios</h3>
-        <p>Cover/scenario tab plus a full budget-vs-actual build, with commentary written the way a finance team would actually flag it for leadership.</p>
-        <a href="projects.html" class="link">View case study →</a>
-      </div>
-      <div class="project-viz" role="img" aria-label="Bar chart: Quarterly Revenue Budget vs. Actual. Q1 +2.1%, Q2 +5.6%, Q3 +3.9%, Q4 forecast pending.">
-        <div class="viz-label">QUARTERLY REVENUE — BUDGET VS. ACTUAL</div>
-
-        <div class="bar-row">
-          <div class="bar-meta"><span>Q1</span><span>+2.1%</span></div>
-          <div class="bar-track">
-            <div class="bar budget"><span style="width:78%"></span></div>
-            <div class="bar actual"><span style="width:80%"></span></div>
-          </div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span>Q2</span><span>+5.6%</span></div>
-          <div class="bar-track">
-            <div class="bar budget"><span style="width:80%"></span></div>
-            <div class="bar actual"><span style="width:85%"></span></div>
-          </div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span>Q3</span><span>+3.9%</span></div>
-          <div class="bar-track">
-            <div class="bar budget"><span style="width:83%"></span></div>
-            <div class="bar actual"><span style="width:86%"></span></div>
-          </div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span>Q4 (fcst)</span><span>—</span></div>
-          <div class="bar-track">
-            <div class="bar budget"><span style="width:88%"></span></div>
-            <div class="bar actual"><span style="width:0%"></span></div>
+      <div class="bio-col-left">
+        <h2 class="bio-heading">Why Financial Analysis?</h2>
+        <p class="bio-subtitle">I've seen what happens when a business has it, and when it doesn't.</p>
+        <div class="bio-summary-card">
+          <div class="bsc-head">Quick Summary</div>
+          <div class="bsc-body">
+            <div class="bsc-section">
+              <span class="bsc-key">Core Philosophy</span>
+              <span class="bsc-quote">Financial analysis isn't just modeling numbers. It's providing visibility for business leaders.</span>
+            </div>
+            <div class="bsc-section">
+              <span class="bsc-key">Working Style</span>
+              <ul class="bsc-list">
+                <li>Learn by building, not just studying</li>
+                <li>Uses AI as a development partner to build practical tools</li>
+                <li>End-to-end: SQL → Excel → Power BI</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="bio-col-right">
+        <div class="bio-body">
+          <p>My family ran a café in Taiwan, and I helped manage operations for a stretch. That's where I first understood what financial visibility really means. Not as a concept, but as the difference between catching a cost problem early and missing it entirely. Budget vs. actual, variance by cost center, month-end commentary: I didn't learn why FP&amp;A matters from a textbook. I learned it from watching what happens without it.</p>
+          <p>That experience is why I wanted to formalize the skill, not just rely on instinct. When I came to the U.S. to pursue my MSF at the University of Arizona, I made a rule: learn by building, not just studying. That habit didn't stay inside finance. Whenever I found a gap, I built a solution, from an automated job search tracker and a market monitor to this portfolio. Using AI as a development partner, I've learned to reach for the right tools to solve the problems in front of me.</p>
+          <p>That's why I chose financial analysis: not for the numbers, but for the visibility they give a business.</p>
+        </div>
+        <div class="bio-cta">
+          <a href="resume.html" class="bio-cta-link">View Resume →</a>
+          <span class="bio-cta-sep">·</span>
+          <a href="contact.html" class="bio-cta-link">Get in touch →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section class="articles">
   <div class="wrap">
-    <div class="articles-head">
-      <span class="eyebrow">Latest Writing</span>
-      <h2>From the Articles</h2>
-    </div>
-    <div class="article-grid">
-      <div class="article-card">
-        <span class="date">JUN 2026</span>
-        <h3>Why budget-vs-actual is the most underrated FP&amp;A skill</h3>
-        <p>What I learned building a full variance model from scratch, and why the commentary matters more than the spreadsheet.</p>
-        <a href="article-1.html" class="read">Read Article →</a>
+    <div class="articles-carousel-head">
+      <div class="articles-head">
+        <h2>From the Articles</h2>
+        <p class="articles-sub">Insights on financial modeling, corporate strategy, and valuation.</p>
       </div>
-      <div class="article-card">
-        <span class="date">JUL 2026</span>
-        <h3>What the Cash Balance Hides: How Texas Instruments Actually Funded Its Fab Expansion</h3>
-        <p>A three-statement model surfaced something the income statement alone never shows.</p>
-        <a href="article-2.html" class="read">Read Article →</a>
+    </div>
+    <div class="articles-carousel-wrap">
+      <div class="article-grid carousel-track" id="articlesTrack">
+        <div class="article-card">
+          <span class="date">JAN 2026</span>
+          <h3>A High ROE Can Hide Two Very Different Companies</h3>
+          <p>Two companies, same ROE. One earns it through profitability and efficiency. The other borrows its way there.</p>
+          <div class="card-footer">
+            <span class="read-time">4 MIN READ</span>
+            <a href="article-3.html" class="card-read">Read Article →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <span class="date">MAR 2026</span>
+          <h3>The Three Statements Tell You When You Are Wrong</h3>
+          <p>The three statements are not three separate documents. They are a closed system that checks your work.</p>
+          <div class="card-footer">
+            <span class="read-time">5 MIN READ</span>
+            <a href="article-4.html" class="card-read">Read Article →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <span class="date">MAY 2026</span>
+          <h3>A Company Can Be Profitable and Still Go Broke</h3>
+          <p>Profit and cash are not the same thing. A company can report growing profit year after year and still run out of money.</p>
+          <div class="card-footer">
+            <span class="read-time">5 MIN READ</span>
+            <a href="article-5.html" class="card-read">Read Article →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <span class="date">JUN 2026</span>
+          <h3>Why budget-vs-actual is the most underrated FP&amp;A skill</h3>
+          <p>What I learned building a full variance model from scratch, and why the commentary matters more than the spreadsheet.</p>
+          <div class="card-footer">
+            <span class="read-time">COMING SOON</span>
+            <a href="article-1.html" class="card-read">Read Article →</a>
+          </div>
+        </div>
+        <div class="article-card">
+          <span class="date">JUL 2026</span>
+          <h3>What the Cash Balance Hides: How Texas Instruments Actually Funded Its Fab Expansion</h3>
+          <p>A three-statement model surfaced something the income statement alone never shows.</p>
+          <div class="card-footer">
+            <span class="read-time">4 MIN READ</span>
+            <a href="article-2.html" class="card-read">Read Article →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-ctrl-btn" id="articlesPrev">← PREV</button>
+      <div class="carousel-dots" id="carouselDots">
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+      </div>
+      <button class="carousel-ctrl-btn" id="articlesNext">NEXT →</button>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var track   = document.getElementById('articlesTrack');
+  var prev    = document.getElementById('articlesPrev');
+  var next    = document.getElementById('articlesNext');
+  var dots    = document.querySelectorAll('#carouselDots .carousel-dot');
+  var cards   = track.querySelectorAll('.article-card');
+  var visible = 3, current = 0, total = cards.length;
+  var pages   = total - visible + 1; /* 3 possible positions: 0,1,2 */
+
+  function step() {
+    var gap = 24;
+    var w = track.parentElement.offsetWidth;
+    return (w - gap * (visible - 1)) / visible + gap;
+  }
+
+  function updateDots() {
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i >= current && i < current + visible);
+    });
+  }
+
+  function update() {
+    track.style.transform = 'translateX(' + (-current * step()) + 'px)';
+    updateDots();
+  }
+
+  prev.addEventListener('click', function(){ current = (current - 1 + pages) % pages; update(); });
+  next.addEventListener('click', function(){ current = (current + 1) % pages; update(); });
+
+  var touchStartX = 0, touchDeltaX = 0;
+  track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; touchDeltaX = 0; }, { passive: true });
+  track.addEventListener('touchmove',  function(e){ touchDeltaX = e.touches[0].clientX - touchStartX; }, { passive: true });
+  track.addEventListener('touchend',   function(){
+    if(Math.abs(touchDeltaX) > 40){
+      if(touchDeltaX < 0){ current = (current + 1) % pages; }
+      else               { current = (current - 1 + pages) % pages; }
+      update();
+    }
+    touchDeltaX = 0;
+  });
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
+<section class="open-to-work">
+  <div class="wrap">
+    <div class="otw-card">
+      <div class="otw-left">
+        <div class="otw-status">
+          <span class="otw-dot"></span>
+          <span class="otw-status-text">Open for Full-Time Roles</span>
+        </div>
+        <p class="otw-desc">Interested in discussing financial modeling, FP&amp;A opportunities, or potential collaboration?</p>
+        <p class="otw-roles-line"><span class="otw-roles-label">Target Roles:</span> Financial Analyst &middot; FP&amp;A Analyst &middot; Financial Data Analyst</p>
+      </div>
+      <div class="otw-right">
+        <div class="otw-meta">
+          <span class="otw-key">Available From</span>
+          <span class="otw-date">January 2027</span>
+        </div>
+        <div class="otw-actions">
+          <a href="contact.html" class="btn btn-primary">Get in Touch →</a>
+          <a href="resume.html" class="otw-resume-link">View Full Resume →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -208,15 +498,25 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-bottom">
-      <span>© 2026 Jin-Tang Shen (Tom) — Portfolio</span>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="articles.html">Articles</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">&copy; 2026 Jin-Tang Shen (Tom)</span>
+        <span class="footer-sub">MS Finance @ University of Arizona</span>
+      </div>
+      <div class="footer-right">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="articles.html">Articles</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/jintang-shen/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="mailto:tom91517@gmail.com">Email &#8599;</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

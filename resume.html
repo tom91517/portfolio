@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F4D3A'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F4D3A'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F3864'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F3864'/%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -41,18 +41,20 @@
 <section class="page-header">
   <div class="wrap">
     <h1>Resume</h1>
-    <p>Work history, education, and core skills — laid out the way a hiring manager actually reads them.</p>
+    <p>Latest one-page resume. Work history, education, and core skills.</p>
     <div class="cta-row" style="margin-top:24px;">
-      <a href="resume.pdf" download="Jin-Tang Shen - Resume.pdf" class="btn btn-primary">Download Resume (PDF)</a>
+      <a href="resume.pdf" download="Jin-Tang Shen - Resume.pdf" class="btn btn-primary">Download Resume (PDF) ↓</a>
     </div>
   </div>
 </section>
 
 <section class="resume-viewer">
   <div class="wrap">
-    <object data="resume.pdf" type="application/pdf" class="resume-embed">
-      <p>Your browser can't display the PDF inline. <a href="resume.pdf" download="Jin-Tang Shen - Resume.pdf">Download it here</a> instead.</p>
-    </object>
+    <div class="resume-paper">
+      <iframe src="resume.pdf#toolbar=0&navpanes=0&view=FitH" class="resume-embed" title="Jin-Tang Shen Resume">
+        <p>Your browser can't display the PDF inline. <a href="resume.pdf" download="Jin-Tang Shen - Resume.pdf">Download it here</a> instead.</p>
+      </iframe>
+    </div>
   </div>
 </section>
 
@@ -60,15 +62,25 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-bottom">
-      <span>© 2026 Jin-Tang Shen (Tom) — Portfolio</span>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="resume.html">Resume</a>
-        <a href="projects.html">Projects</a>
-        <a href="articles.html">Articles</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">&copy; 2026 Jin-Tang Shen (Tom)</span>
+        <span class="footer-sub">MS Finance @ University of Arizona</span>
+      </div>
+      <div class="footer-right">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="articles.html">Articles</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/jintang-shen/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="mailto:tom91517@gmail.com">Email &#8599;</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

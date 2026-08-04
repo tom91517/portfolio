@@ -11,7 +11,7 @@
   gtag('js', new Date());
   gtag('config', 'G-GY1DFJFTY4');
 </script>
-<title>Coming Soon — Jin-Tang Shen (Tom)</title>
+<title>Retail Financial Performance Analytics — Jin-Tang Shen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
     <nav class="links">
       <a href="index.html">Home</a>
       <a href="resume.html" class="nav-cta">Resume</a>
-      <a href="projects.html">Projects</a>
-      <a href="articles.html" class="active" aria-current="page">Articles</a>
+      <a href="projects.html" class="active" aria-current="page">Projects</a>
+      <a href="articles.html">Articles</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
@@ -38,13 +38,41 @@
 
 <main class="page-main">
 
-<section class="page-header">
-  <div class="wrap">
-    <span class="eyebrow">Article</span>
-    <h1>Coming Soon</h1>
-    <p>This article is on its way. Check back soon.</p>
-  </div>
-</section>
+  <section class="case-hero">
+    <div class="wrap">
+      <a href="projects.html" class="case-back">← Back to Projects</a>
+      <h1>Retail Financial Performance Analytics</h1>
+      <div class="case-tldr">
+        <div class="tldr-body">
+          <div class="tldr-label">Executive Summary</div>
+          <p>An executive dashboard built in Power BI Desktop from the Sample Superstore dataset, using a star schema with one fact table and four dimension tables, plus DAX time-intelligence measures for year-over-year comparisons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-body">
+    <div class="wrap">
+
+      <div class="case-section" style="max-width:none;">
+        <h2 style="font-size:32px; letter-spacing:-0.01em; margin-bottom:12px;">Dashboard Preview</h2>
+        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 20px;">Use the arrows below the dashboard to navigate: Executive Overview → Sales Overview → Profit Overview → Customer &amp; Product Analysis</p>
+        <div class="powerbi-embed">
+          <iframe title="Retail Financial Performance Analytics" src="https://app.powerbi.com/view?r=eyJrIjoiNmYyYjY2N2UtMTg3Yy00NDczLThlMTgtZGIxNDAxNzQzYzNmIiwidCI6IjcwNzQwZWFhLTY5OTctNGZjOS1hOGYwLTBmYzc4MjE0MWQ3YyJ9&pageName=561459a88ad385875800" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+      </div>
+
+      <div class="case-section">
+        <h2>Key Findings</h2>
+        <ul class="case-findings">
+          <li>The analysis surfaced a pattern that a simple totals view would have missed: Central region was the only one to decline in two separate years (2015 and 2017), while every other region grew.</li>
+          <li>Overall YoY sales growth sits at 46.9%, but that number hides a low-base effect in early years that a naive percentage comparison would have overstated.</li>
+          <li>The dashboard runs on a dedicated Calendar table rather than the dataset's native order dates, since SAMEPERIODLASTYEAR requires a contiguous date range. This detail broke the model twice before the underlying date table was fixed.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
 
 </main>
 

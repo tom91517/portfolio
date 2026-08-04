@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GY1DFJFTY4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GY1DFJFTY4');
+</script>
+<title>The Three Statements Tell You When You Are Wrong — Jin-Tang Shen (Tom)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='0' width='14' height='14' fill='%231F3864'/%3E%3Crect x='18' y='0' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='0' y='18' width='14' height='14' fill='%23B6822A'/%3E%3Crect x='18' y='18' width='14' height='14' fill='%231F3864'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a class="wordmark" href="index.html">
+      <span class="mark"><span></span><span></span><span></span><span></span></span>
+      <span class="wordmark-text">Jin-Tang Shen (Tom)<span class="wordmark-sub">Financial Analyst Portfolio · FP&amp;A &amp; Modeling · MSF @ U of Arizona</span></span>
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="resume.html" class="nav-cta">Resume</a>
+      <a href="projects.html">Projects</a>
+      <a href="articles.html" class="active" aria-current="page">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-main">
+
+<section class="article-hero">
+  <div class="wrap">
+    <a href="articles.html" class="case-back">← Back to Articles</a>
+    <h1 class="article-hero-title">The Three Statements Tell You When You Are Wrong</h1>
+    <div class="article-hero-meta">
+      <span class="article-row-tag">Financial Analysis</span>
+      <span class="article-hero-date">MAR 2026</span>
+    </div>
+  </div>
+</section>
+
+<section class="article-body-section">
+  <div class="wrap">
+    <div class="article-prose">
+
+      <p>Ask most people what it means to "know accounting" and they will describe three documents. The Income Statement lists revenue and expenses down to net income. The Balance Sheet lists what a company owns and owes. The Cash Flow Statement tracks cash in and out. Learn what goes on each one, the thinking goes, and you know accounting.</p>
+
+      <p>That is a checklist view, and it misses the most useful property the three statements have. They are not three separate documents. They are one wired system, and the wiring has a remarkable feature. It tells you when you have made a mistake.</p>
+
+      <h2>A closed system, shown two ways</h2>
+
+      <p>There is a classic interview question that gets at this. If you were stranded on a desert island and could see only one financial statement to judge a company's health, which would you pick? The usual answer is the Cash Flow Statement, because it shows how much cash the business actually generates, stripped of the non-cash items that can flatter the Income Statement.</p>
+
+      <p>The more revealing follow-up is this. What if you could see two statements? Here the answer is the Income Statement and the Balance Sheet, and the reason is the interesting part. With those two, plus a beginning and ending Balance Sheet covering the same period, you can reconstruct the Cash Flow Statement yourself. You do not need to be handed it. It is already implied by the other two.</p>
+
+      <p>Sit with that for a second. If two of the statements can produce the third, then the three are not independent. They are a closed system. Every number is tied to the others by rules that cannot be broken without something else breaking too.</p>
+
+      <h2>Why that matters: the system checks itself</h2>
+
+      <p>Because the system is closed, you cannot change one number in isolation. Push on any single item and the effect has to travel through all three statements, and at the end the Balance Sheet has to balance. Assets must still equal liabilities plus equity.</p>
+
+      <p>That constraint is not busywork. It is a built-in audit. When you build a model and the Balance Sheet does not balance, the model is not telling you the company is unhealthy. It is telling you that your own logic has a hole in it somewhere. The statements are checking your work. Very few analytical tools do this. A spreadsheet of ratios will happily let you enter nonsense. A linked three-statement model will not.</p>
+
+      <p>The way to use that property is to move through the statements in a fixed order every time: Income Statement first, then Cash Flow Statement, then Balance Sheet. Build the habit and the final balance check becomes your proof that every step in between was consistent.</p>
+
+      <h2>Walking one item through</h2>
+
+      <p>Take a simple case. Depreciation rises by $10.</p>
+
+      <div class="article-walkthrough">
+        <div class="awt-step">
+          <span class="awt-label">Income Statement</span>
+          <p>Operating income falls by $10. At a 40 percent tax rate, net income falls by $6.</p>
+        </div>
+        <div class="awt-step">
+          <span class="awt-label">Cash Flow Statement</span>
+          <p>Net income at the top is down $6. But depreciation is a non-cash expense, so you add the full $10 back. Cash flow from operations rises by $4, and with no other changes, the net change in cash is up $4.</p>
+        </div>
+        <div class="awt-step">
+          <span class="awt-label">Balance Sheet</span>
+          <p>On the asset side, property and equipment falls by $10 from the depreciation, while cash rises by $4. Assets are down $6 overall. On the other side, net income fell by $6, so retained earnings fall by $6. Both sides move by the same $6 and the Balance Sheet balances.</p>
+        </div>
+      </div>
+
+      <p>Notice the small puzzle buried in there. Depreciation is a non-cash expense, yet cash went up by $4. How does a non-cash item move cash at all? Because depreciation is tax-deductible, and taxes are paid in cash. The $4 is exactly the tax you no longer owe, which is 40 percent of the $10 charge. Getting this right is one of the cleaner ways to tell whether someone understands the mechanics or is reciting an answer.</p>
+
+      <h2>The discipline holds even when intuition fails</h2>
+
+      <p>The real value of the fixed-order method shows up on the strange cases, not the tidy ones. Here is one that trips up almost everyone.</p>
+
+      <p>A company writes down $100 of its own debt, a liability it owes. Intuition says writing something down is bad, so this should be a loss. It is the opposite. Reducing a liability is recorded as a gain. Pre-tax income rises by $100, and at a 40 percent rate net income rises by $60.</p>
+
+      <p>Run it through the same order. On the Cash Flow Statement, net income is up $60, but the $100 gain is non-cash, so you subtract it, and cash flow from operations falls by $40. On the Balance Sheet, cash is down $40, so assets fall by $40. Debt falls by $100 while retained earnings rise by $60, so liabilities plus equity also fall by $40. It balances.</p>
+
+      <p>The point is not the accounting trivia. The point is that your intuition was wrong about the sign, and the method caught it anyway. You did not have to trust your gut. You trusted the process, followed the wiring, and the balance check confirmed you landed in the right place.</p>
+
+      <h2>Why this is the first question in every finance interview</h2>
+
+      <p>There is a reason "walk me through the three statements" opens almost every finance interview. It is not a memory test. It is a test of whether you can take a single change and trace it through an interconnected system without breaking it.</p>
+
+      <p>That skill is the foundation of financial planning and analysis. A forecast is this exercise repeated hundreds of times. Every assumption you set has to propagate through all three statements and still hold together. When the model balances, you have earned the right to trust its output. When it does not, it has done you a favor by refusing to lie. Learning the statements as a self-checking system, rather than three lists to memorize, is what separates a model you hope is right from a model you can defend.</p>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">&copy; 2026 Jin-Tang Shen (Tom)</span>
+        <span class="footer-sub">MS Finance @ University of Arizona</span>
+      </div>
+      <div class="footer-right">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="articles.html">Articles</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/jintang-shen/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="mailto:tom91517@gmail.com">Email &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
