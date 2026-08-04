@@ -1574,6 +1574,7 @@ nav.links a.nav-cta:hover{
 .project-tile-img{
   width:100%; height:100%;
   object-fit:cover;
+  object-position:top left;
   display:block;
 }
 .project-tile-visual svg{ width:46px; height:46px; }
