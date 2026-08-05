@@ -82,7 +82,7 @@
         <div id="cfc-success" style="display:none; background:#D1FAE5; border:1px solid #6EE7B7; border-radius:6px; padding:16px 20px; margin-bottom:20px; color:#065F46; font-size:15px;">
           Message sent. I'll get back to you soon.
         </div>
-        <form name="contact" action="/contact?sent=1" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field" class="cfc-form">
+        <form name="contact" method="POST" data-netlify="true" netlify netlify-honeypot="bot-field" class="cfc-form" id="cfc-form">
           <input type="hidden" name="form-name" value="contact">
           <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
@@ -137,10 +137,36 @@
 </footer>
 
 <script>
-  if (new URLSearchParams(location.search).get('sent') === '1') {
-    document.getElementById('cfc-success').style.display = 'block';
-    window.scrollTo(0, document.getElementById('cfc-success').offsetTop - 100);
-  }
+  document.getElementById('cfc-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn  = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var s = document.getElementById('cfc-success');
+        s.style.display = 'block';
+        form.reset();
+        btn.style.display = 'none';
+        s.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Message →';
+        alert('Something went wrong. Please email me directly at tom91517@gmail.com');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send Message →';
+      alert('Something went wrong. Please email me directly at tom91517@gmail.com');
+    });
+  });
 </script>
 </body>
 </html>
