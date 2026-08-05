@@ -50,7 +50,7 @@
 </section>
 
 <section class="article-body-section">
-  <div class="wrap">
+  <div class="wrap article-wrap">
     <div class="article-prose">
 
       <h2>The setup</h2>
@@ -59,7 +59,7 @@
 
       <h2>The accidental discovery</h2>
       <p>While constructing a three-statement model for TXN, I set two forecast assumptions that seemed conservative and reasonable: hold short-term investments flat, and assume no net new borrowing (a constant-debt base case). With those two assumptions in place, the model's projected cash balance went negative almost immediately.</p>
-      <p>My first instinct was a formula error. It wasn't. The model was correctly showing that TXN's operating cash flow alone could not cover its capital expenditures plus its full dividend plus its share buybacks. Something else had been funding the gap. To find out what, I went back to the historical statements — this time looking not at the income statement but at the balance sheet and the financing lines.</p>
+      <p>My first instinct was a formula error. It wasn't. The model was correctly showing that TXN's operating cash flow alone could not cover its capital expenditures plus its full dividend plus its share buybacks. Something else had been funding the gap. To find out what, I went back to the historical statements, this time looking not at the income statement but at the balance sheet and the financing lines.</p>
 
       <h2>What the balance sheet reveals</h2>
       <p>The cash line held steady. The liquidity behind it did not.</p>
@@ -95,7 +95,7 @@
           </tbody>
         </table>
       </div>
-      <p>Short-term investments fell from $5,611m to $1,656m in three years. Total liquidity — cash plus short-term investments — nearly halved. On top of that, the financing section shows roughly $5,300m of net debt raised over the same period.</p>
+      <p>Short-term investments fell from $5,611m to $1,656m in three years. Total liquidity (cash plus short-term investments) nearly halved. On top of that, the financing section shows roughly $5,300m of net debt raised over the same period.</p>
       <p>So the fab expansion was funded by two taps that the cash balance conceals: drawing down the investment portfolio, and borrowing. The flat cash line was held in place by both. Reading only the cash balance, an investor would conclude the buildout was self-funded. It was not.</p>
 
       <h2>Why this reframes management's message</h2>
@@ -103,11 +103,15 @@
 
       <h2>The modeling lesson</h2>
       <p>There is a second, more general lesson here, and it is really the point.</p>
-      <p>In my first forecast, I assumed a flat $1,500m of annual buybacks, continuing the recent trend. On its own, that assumption looked entirely reasonable. It was only after linking all three statements — so that cash, capex, dividends, and buybacks all had to hold at once — that the assumption revealed itself as unaffordable: it drove cash negative. An assumption can be individually plausible and still be impossible when every other assumption has to be true at the same time.</p>
-      <p>That is what a three-statement model enforces and what a standalone income statement or a quick multiple cannot. It is also why the exercise of judging whether a company needs external financing — something I had studied in the abstract — only became concrete once the statements were wired together and the cash simply would not balance.</p>
+      <p>In my first forecast, I assumed a flat $1,500m of annual buybacks, continuing the recent trend. On its own, that assumption looked entirely reasonable. It was only after linking all three statements, so that cash, capex, dividends, and buybacks all had to hold at once, that the assumption revealed itself as unaffordable: it drove cash negative. An assumption can be individually plausible and still be impossible when every other assumption has to be true at the same time.</p>
+      <p>That is what a three-statement model enforces and what a standalone income statement or a quick multiple cannot. It is also why the exercise of judging whether a company needs external financing, something I had studied in the abstract, only became concrete once the statements were wired together and the cash simply would not balance.</p>
       <p><strong>The income statement tells you whether a company is profitable. Only the linked statements tell you whether its plan is fundable.</strong></p>
 
     </div>
+    <aside class="article-toc">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list"></ul>
+    </aside>
   </div>
 </section>
 
@@ -138,5 +142,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var hs = document.querySelectorAll('.article-prose h2');
+  var ul = document.querySelector('.toc-list');
+  if (!ul) return;
+  hs.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+})();
+</script>
 </body>
 </html>

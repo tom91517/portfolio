@@ -1140,6 +1140,7 @@ nav.links a.nav-cta:hover{
   font-family:'Inter', sans-serif; font-weight:700; font-size:21px;
   letter-spacing:-0.01em; color:var(--ink);
   margin:44px 0 14px; line-height:1.3;
+  scroll-margin-top:88px;
 }
 .article-formula{
   font-family:'IBM Plex Mono', monospace; font-size:15px;
@@ -1194,6 +1195,52 @@ nav.links a.nav-cta:hover{
   color:var(--green-soft); display:block; margin-bottom:6px;
 }
 .awt-step p{ margin:0; font-size:15px; line-height:1.65; }
+
+/* Article TOC sidebar */
+.article-wrap{
+  display:grid;
+  grid-template-columns:minmax(0,68ch) 1fr;
+  gap:56px;
+  align-items:start;
+}
+.article-toc{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--card);
+  overflow:hidden;
+}
+.toc-label{
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:#fff;
+  background:var(--green);
+  margin:0;
+  padding:11px 16px;
+}
+.toc-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+.toc-list li{ border-top:1px solid var(--line-soft); }
+.toc-list li:first-child{ border-top:none; }
+.toc-list a{
+  font-family:'IBM Plex Sans', sans-serif;
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.5;
+  display:block;
+  padding:9px 16px;
+}
+.toc-list a:hover{ color:var(--green-soft); }
+@media (max-width:860px){
+  .article-wrap{ display:block; }
+  .article-toc{ display:none; }
+}
 
 /* ---------- ARTICLES ---------- */
 .articles{

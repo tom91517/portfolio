@@ -50,7 +50,7 @@
 </section>
 
 <section class="article-body-section">
-  <div class="wrap">
+  <div class="wrap article-wrap">
     <div class="article-prose">
 
       <p>Ask most people what it means to "know accounting" and they will describe three documents. The Income Statement lists revenue and expenses down to net income. The Balance Sheet lists what a company owns and owes. The Cash Flow Statement tracks cash in and out. Learn what goes on each one, the thinking goes, and you know accounting.</p>
@@ -111,6 +111,10 @@
       <p>That skill is the foundation of financial planning and analysis. A forecast is this exercise repeated hundreds of times. Every assumption you set has to propagate through all three statements and still hold together. When the model balances, you have earned the right to trust its output. When it does not, it has done you a favor by refusing to lie. Learning the statements as a self-checking system, rather than three lists to memorize, is what separates a model you hope is right from a model you can defend.</p>
 
     </div>
+    <aside class="article-toc">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list"></ul>
+    </aside>
   </div>
 </section>
 
@@ -141,5 +145,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var hs = document.querySelectorAll('.article-prose h2');
+  var ul = document.querySelector('.toc-list');
+  if (!ul) return;
+  hs.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+})();
+</script>
 </body>
 </html>

@@ -50,7 +50,7 @@
 </section>
 
 <section class="article-body-section">
-  <div class="wrap">
+  <div class="wrap article-wrap">
     <div class="article-prose">
 
       <p>I already knew my way around Excel, and I had built dashboards in Power BI. For a while that felt like enough. Then I started paying closer attention to what financial analyst roles actually ask for, and one skill kept showing up that I did not have: SQL.</p>
@@ -88,6 +88,10 @@
       <p>But the bigger point is not really about SQL. School will not teach you every skill your job will need, and neither will your last role prepare you for your next one. What matters is whether you can spot a gap, decide what will close it, and go close it. SQL is just the first place I am putting that into practice. The skill I am actually building is the one that makes the next gap, whatever it turns out to be, a lot less intimidating.</p>
 
     </div>
+    <aside class="article-toc">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list"></ul>
+    </aside>
   </div>
 </section>
 
@@ -118,5 +122,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var hs = document.querySelectorAll('.article-prose h2');
+  var ul = document.querySelector('.toc-list');
+  if (!ul) return;
+  hs.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+})();
+</script>
 </body>
 </html>

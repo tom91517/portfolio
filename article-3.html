@@ -50,7 +50,7 @@
 </section>
 
 <section class="article-body-section">
-  <div class="wrap">
+  <div class="wrap article-wrap">
     <div class="article-prose">
 
       <p>Suppose you are handed two companies and told both earn a return on equity of around 25 percent. On the surface they look equally strong. But that single number tells you almost nothing about how each company actually got there. One could be a highly profitable business that uses its assets efficiently. The other could be an average business that borrowed heavily to lift the same number. Both report a similar ROE. They are not the same company.</p>
@@ -112,6 +112,10 @@
       <p>That is the real value of DuPont. It takes a single summary figure that everyone quotes and breaks it into drivers that people can actually act on. Reading ROE without that breakdown is how you end up praising a company for something it did not really do.</p>
 
     </div>
+    <aside class="article-toc">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list"></ul>
+    </aside>
   </div>
 </section>
 
@@ -142,5 +146,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var hs = document.querySelectorAll('.article-prose h2');
+  var ul = document.querySelector('.toc-list');
+  if (!ul) return;
+  hs.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+})();
+</script>
 </body>
 </html>

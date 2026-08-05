@@ -50,7 +50,7 @@
 </section>
 
 <section class="article-body-section">
-  <div class="wrap">
+  <div class="wrap article-wrap">
     <div class="article-prose">
 
       <p>Here is something that surprises a lot of people the first time they hear it. A company can report growing profit year after year and still run out of money and fail. It sounds like a contradiction. If you are making money, how do you go broke?</p>
@@ -111,6 +111,10 @@
       <p>Profit tells you whether the business model works. Cash tells you whether the company survives the year.</p>
 
     </div>
+    <aside class="article-toc">
+      <p class="toc-label">In This Article</p>
+      <ul class="toc-list"></ul>
+    </aside>
   </div>
 </section>
 
@@ -141,5 +145,21 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var hs = document.querySelectorAll('.article-prose h2');
+  var ul = document.querySelector('.toc-list');
+  if (!ul) return;
+  hs.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+})();
+</script>
 </body>
 </html>
