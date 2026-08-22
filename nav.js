@@ -52,7 +52,7 @@
       '</div>' +
       '<div class="resume-modal-body">' +
         '<div class="resume-paper">' +
-          '<iframe class="resume-embed" title="Jin-Tang Shen Resume"></iframe>' +
+          '<iframe class="resume-embed" tabindex="-1" title="Jin-Tang Shen Resume"></iframe>' +
           '<div class="resume-fallback">' +
             '<p class="resume-fallback-title">The resume reads better full screen.</p>' +
             '<p class="resume-fallback-note">Open the PDF in a new tab to read it at full size.</p>' +
@@ -116,7 +116,13 @@
     }
     // Keep Tab inside the dialog so focus cannot wander onto the page behind it.
     if (e.key !== 'Tab') return;
-    var items = overlay.querySelectorAll('a[href], button:not([disabled])');
+    // The mobile fallback link is display:none on desktop and vice versa.
+    // Counting hidden elements makes the wrap fire on the wrong one, and focus
+    // falls out of the dialog.
+    var items = [].filter.call(
+      overlay.querySelectorAll('a[href], button:not([disabled])'),
+      function (el) { return el.offsetParent !== null; }
+    );
     if (!items.length) return;
     var first = items[0];
     var last = items[items.length - 1];
