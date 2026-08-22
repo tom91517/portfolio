@@ -18,11 +18,11 @@ Static HTML/CSS, no framework or build tool. Deployed on Netlify via GitHub cont
 
 ## Product Purpose
 
-A portfolio that closes the experience gap for a new MSF graduate by showing finished, real-company-data work rather than coursework. Every project here is something Tom built from scratch — a full Budget vs. Actual variance model, a three-statement model from TXN filings, and Power BI dashboards — to demonstrate FP&A readiness before holding a title.
+A portfolio that closes the experience gap for a new MSF graduate by showing finished analyst work rather than coursework. Every project here is something Tom built from scratch: a full Budget vs. Actual variance model, a three-statement model with DCF built from TXN filings, and Power BI dashboards. Together they demonstrate FP&A readiness before holding the title.
 
 ## Positioning
 
-The only FP&A candidate portfolio built on real company data rather than synthetic case data, with case studies that show the commentary and insight layer — not just the spreadsheet output.
+An evidence-first FP&A portfolio combining public-company filings, clearly labeled operating simulations, and public datasets. Each project shows the model, the assumptions behind it, the analysis, and decision-ready commentary, not just the spreadsheet output.
 
 ## Operating Context
 
@@ -37,24 +37,24 @@ Visitors arrive from job applications (resume attachment), LinkedIn cold outreac
 
 ## Brand Commitments
 
-- **Colors:** Corporate Trust palette — `--green: #1F4D3A`, `--amber: #B6822A`, `--paper: #F8FAFC`, `--ink: #0F172A`
+- **Colors:** `--green: #1F3864` (navy, the variable name is historical), `--amber: #B6822A`, `--brick: #9C4632`, `--paper: #F4F6F9`, `--ink: #111827`. `style.css` `:root` is the source of truth.
 - **Type:** IBM Plex Mono (nav, labels, monospace UI), IBM Plex Sans (body), Inter (headings)
 - **Tone:** Direct, confident, evidence-first. No hedging language. No generic MBA-speak.
 - **Anti-references:** Generic SaaS purple-gradient portfolios; Bootstrap-default card layouts; stock photo hero imagery
 
 ## Evidence on Hand
 
-- NorthBeam Analytics BvA model (Excel, embedded via Google Sheets)
-- TXN 3-Statement DCF model (Excel, downloadable)
-- 2 published articles (article-1.html, article-2.html)
-- 3 coming-soon project slots (placeholders)
+- NorthBeam Analytics BvA model (Excel, embedded via Google Sheets). NorthBeam is a fictional B2B SaaS company, disclosed as such on the site.
+- TXN 3-Statement model and DCF (Excel, downloadable). Built from Texas Instruments public filings.
+- Retail Financial Performance Analytics (Power BI). Uses the public Sample Superstore dataset.
+- 5 published articles (article-1.html through article-5.html)
 
 ## Product Principles
 
 1. **Show the work, not the résumé.** Every claim on the site must be backed by a visible artifact.
 2. **Finance-team legibility first.** Design decisions serve a skeptical, time-pressed hiring manager, not a design reviewer.
 3. **Credibility over cleverness.** Visual restraint signals professional judgment; animation and decoration must earn their place.
-4. **Real data only.** No synthetic or fabricated numbers in any project or example.
+4. **Transparent data provenance.** Public filings, simulated operating cases, and public sample datasets are each labeled for what they are, and never presented as something they are not.
 5. **One clear next action.** Every page end leads toward Download Resume or Contact.
 
 ## Accessibility & Inclusion

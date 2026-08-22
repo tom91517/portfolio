@@ -268,6 +268,9 @@ button:focus-visible{
   outline:2px solid var(--green);
   outline-offset:3px;
 }
+/* The footer background is var(--green) too, so the default ring was invisible
+   on every footer link. */
+footer a:focus-visible{ outline-color:var(--paper); }
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important; scroll-behavior:auto !important;}
 }
@@ -1177,13 +1180,32 @@ nav.links a.nav-cta:hover{
   border:none;
   display:block;
 }
-.resume-embed p{
-  padding:40px;
+/* Mobile: an A4 PDF squeezed into a phone-width frame is unreadable, and iOS
+   Safari often refuses to render it at all. Below 720px, drop the embed and
+   offer the PDF directly instead. Fallback content inside <iframe> never
+   renders in any modern browser, so it has to be a sibling element. */
+.resume-fallback{
+  display:none;
+  padding:40px 24px;
   text-align:center;
-  color:var(--ink-soft);
+  background:var(--card);
 }
+.resume-fallback-title{
+  font-weight:600;
+  color:var(--ink);
+  margin:0 0 6px;
+}
+.resume-fallback-note{
+  color:var(--ink-soft);
+  margin:0 0 20px;
+}
+.resume-fallback .cta-row{ justify-content:center; }
 @media (max-width:860px){
   .resume-embed{ height:700px; }
+}
+@media (max-width:720px){
+  .resume-embed{ display:none; }
+  .resume-fallback{ display:block; }
 }
 /* ---------- RESUME MODAL ---------- */
 .resume-modal-overlay{
@@ -1266,6 +1288,9 @@ body.resume-modal-lock{ overflow:hidden; }
   .resume-modal-body{ padding:12px; }
   .resume-modal-body .resume-embed{ min-height:0; }
 }
+@media (max-width:720px){
+  .resume-modal-body .resume-fallback{ display:flex; flex-direction:column; justify-content:center; flex:1; }
+}
 /* ---------- PROJECTS GRID ---------- */
 .projects-grid-section{ padding:48px 0; background:var(--card); border-top:1px solid var(--line); }
 .projects-grid{
@@ -1307,7 +1332,7 @@ body.resume-modal-lock{ overflow:hidden; }
 }
 .project-tile-visual svg{ width:46px; height:46px; }
 .project-tile-body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
-.project-tile-body h3{
+.project-tile-body h2{
   font-family:'Inter', sans-serif;
   font-weight:600;
   font-size:20px;
@@ -2205,4 +2230,37 @@ footer{
     .wordmark .mark{ width:15px; height:15px; }
     nav.links{ padding-left:20px; padding-right:20px; }
   }
+
+/* ---------- PROJECT STACK: plain list below 768px ----------
+   The pinned stack needs viewport height to work. On a phone the pin height
+   plus four 260px scroll steps overflowed the viewport by 19 to 31px, every
+   card sat at opacity 0 until the scroll handler ran, and reading all three
+   projects meant scrolling about 1040px. Below 768px the same markup renders
+   as an ordinary vertical list. Desktop keeps the stack.
+   The scroll handler in index.html clears its inline styles at this width. */
+@media (max-width:768px){
+  .ps-scroller{ height:auto; padding-bottom:8px; }
+  .ps-pin{ position:static; height:auto; }
+  .ps-stage{
+    flex:none;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    padding-bottom:0;
+  }
+  .ps-card{
+    position:static;
+    opacity:1;
+    transform:none;
+    transition:none;
+    will-change:auto;
+  }
+  .ps-card-inner{ height:auto; }
+  /* the image is object-fit:cover against a percentage height, which collapses
+     once the card is auto-height */
+  .ps-card-media{ flex:none; height:190px; }
+  .ps-stack-deco,
+  .ps-progress{ display:none; }
 }
+
