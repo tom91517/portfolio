@@ -48,31 +48,33 @@
 
 <main class="page-main">
 
-  <section class="case-hero">
+  <section class="case-hero case-hero-detailed">
     <div class="wrap">
       <a href="projects.html" class="case-back">← Back to Projects</a>
       <h1>Retail Financial Performance Analytics</h1>
-      <div class="case-tldr">
-        <div class="tldr-body">
-          <div class="tldr-label">Executive Summary</div>
-          <p>An executive dashboard built in Power BI Desktop from the Sample Superstore dataset, using a star schema with one fact table and four dimension tables, plus DAX time-intelligence measures for year-over-year comparisons.</p>
-        </div>
+      <p class="case-hero-intro">An executive dashboard built in Power BI Desktop from the Sample Superstore dataset, using a star schema with one fact table and four dimension tables, plus DAX time-intelligence measures for year-over-year comparisons.</p>
+      <div class="case-hero-actions">
+        <a href="#dashboard" class="btn btn-primary">Explore the Dashboard</a>
       </div>
     </div>
   </section>
 
-  <section class="case-body">
+  <section class="case-body case-study-body">
     <div class="wrap">
+      <nav class="case-section-nav" aria-label="Case study sections">
+        <a href="#dashboard">Dashboard Preview</a>
+        <a href="#findings">Key Findings</a>
+      </nav>
 
-      <div class="case-section" style="max-width:none;">
-        <h2 style="font-size:32px; letter-spacing:-0.01em; margin-bottom:12px;">Dashboard Preview</h2>
-        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 20px;">Use the arrows below the dashboard to navigate: Executive Overview → Sales Overview → Profit Overview → Customer &amp; Product Analysis</p>
+      <div class="case-section case-section-full" id="dashboard">
+        <h2 class="case-preview-heading">Dashboard Preview</h2>
+        <p class="case-preview-intro">Use the arrows below the dashboard to navigate: Executive Overview → Sales Overview → Profit Overview → Customer &amp; Product Analysis</p>
         <div class="powerbi-embed">
           <iframe title="Retail Financial Performance Analytics" src="https://app.powerbi.com/view?r=eyJrIjoiNmYyYjY2N2UtMTg3Yy00NDczLThlMTgtZGIxNDAxNzQzYzNmIiwidCI6IjcwNzQwZWFhLTY5OTctNGZjOS1hOGYwLTBmYzc4MjE0MWQ3YyJ9&pageName=561459a88ad385875800" frameborder="0" allowFullScreen="true"></iframe>
         </div>
       </div>
 
-      <div class="case-section">
+      <div class="case-section" id="findings">
         <h2>Key Findings</h2>
         <ul class="case-findings">
           <li>The analysis surfaced a pattern that a simple totals view would have missed: Central region was the only one to decline in two separate years (2015 and 2017), while every other region grew.</li>
@@ -80,6 +82,17 @@
           <li>The dashboard runs on a dedicated Calendar table rather than the dataset's native order dates, since SAMEPERIODLASTYEAR requires a contiguous date range. This detail broke the model twice before the underlying date table was fixed.</li>
         </ul>
       </div>
+
+      <section class="case-project-cta">
+        <div>
+          <h2>Ready to learn more about my work?</h2>
+          <p>Explore my background and experience, or get in touch.</p>
+        </div>
+        <div class="case-project-cta-actions">
+          <a href="resume.html" class="btn btn-primary">View Resume</a>
+          <a href="index.html#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </section>
 
     </div>
   </section>

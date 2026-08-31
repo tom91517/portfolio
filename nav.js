@@ -19,6 +19,121 @@
   });
 }());
 
+// Case studies: keep the compact section navigation in sync with the section
+// currently visible below the sticky site and section headers.
+(function () {
+  var sectionNavs = document.querySelectorAll('.case-section-nav');
+  if (!sectionNavs.length) return;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  sectionNavs.forEach(function (sectionNav) {
+    var links = [].slice.call(sectionNav.querySelectorAll('a[href^="#"]'));
+    var items = links.map(function (link) {
+      var id = decodeURIComponent(link.getAttribute('href').slice(1));
+      return { link: link, section: document.getElementById(id) };
+    }).filter(function (item) {
+      return item.section;
+    });
+    var activeIndex = -1;
+    var pinnedIndex = null;
+    var frameRequested = false;
+
+    function updateEdgeFades() {
+      var maxScroll = Math.max(0, sectionNav.scrollWidth - sectionNav.clientWidth);
+      var fadeWidth = 28;
+      sectionNav.style.setProperty('--case-nav-edge-left', sectionNav.scrollLeft + 'px');
+      sectionNav.style.setProperty('--case-nav-edge-right', Math.max(0, sectionNav.scrollLeft + sectionNav.clientWidth - fadeWidth) + 'px');
+      sectionNav.classList.toggle('can-scroll-left', maxScroll > 2 && sectionNav.scrollLeft > 2);
+      sectionNav.classList.toggle('can-scroll-right', maxScroll > 2 && sectionNav.scrollLeft < maxScroll - 2);
+    }
+
+    function keepActiveLinkVisible(link) {
+      if (sectionNav.scrollWidth <= sectionNav.clientWidth) return;
+      var left = link.offsetLeft;
+      var right = left + link.offsetWidth;
+      var visibleLeft = sectionNav.scrollLeft + 12;
+      var visibleRight = sectionNav.scrollLeft + sectionNav.clientWidth - 38;
+
+      if (left < visibleLeft || right > visibleRight) {
+        sectionNav.scrollTo({
+          left: left - (sectionNav.clientWidth - link.offsetWidth) / 2,
+          behavior: reducedMotion.matches ? 'auto' : 'smooth'
+        });
+      }
+    }
+
+    function setActive(index) {
+      if (index === activeIndex) return;
+      activeIndex = index;
+      items.forEach(function (item, itemIndex) {
+        var active = itemIndex === index;
+        item.link.classList.toggle('is-active', active);
+        if (active) {
+          item.link.setAttribute('aria-current', 'location');
+          keepActiveLinkVisible(item.link);
+        } else {
+          item.link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function updateActiveSection() {
+      frameRequested = false;
+      updateEdgeFades();
+      if (pinnedIndex !== null) {
+        setActive(pinnedIndex);
+        return;
+      }
+      var activationLine = sectionNav.getBoundingClientRect().bottom + 56;
+      var nextActive = 0;
+
+      items.forEach(function (item, index) {
+        if (item.section.getBoundingClientRect().top <= activationLine) nextActive = index;
+      });
+
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        nextActive = items.length - 1;
+      }
+
+      setActive(nextActive);
+    }
+
+    function requestUpdate() {
+      if (frameRequested) return;
+      frameRequested = true;
+      requestAnimationFrame(updateActiveSection);
+    }
+
+    links.forEach(function (link, index) {
+      link.addEventListener('click', function () {
+        pinnedIndex = index;
+        setActive(index);
+      });
+    });
+
+    function releasePinnedSection() {
+      if (pinnedIndex === null) return;
+      pinnedIndex = null;
+      requestUpdate();
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    sectionNav.addEventListener('scroll', updateEdgeFades, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    window.addEventListener('hashchange', requestUpdate);
+    window.addEventListener('wheel', releasePinnedSection, { passive: true });
+    window.addEventListener('touchstart', releasePinnedSection, { passive: true });
+    window.addEventListener('pointerdown', releasePinnedSection, { passive: true });
+    window.addEventListener('keydown', function (event) {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].indexOf(event.key) !== -1) {
+        releasePinnedSection();
+      }
+    });
+    requestUpdate();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(requestUpdate);
+  });
+}());
+
 // Resume: open as a popup instead of navigating to a standalone page
 (function () {
   var RESUME_PDF = 'resume.pdf';

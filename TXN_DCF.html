@@ -49,37 +49,37 @@
 <main class="page-main">
 
   <!-- HERO -->
-  <section class="case-hero">
+  <section class="case-hero case-hero-detailed">
     <div class="wrap">
       <a href="projects.html" class="case-back">← Back to Projects</a>
       <h1>TXN Three-Statement Model &amp; DCF Valuation</h1>
-      <div class="case-tldr">
-        <div class="tldr-body">
-          <div class="tldr-label">Executive Summary</div>
-          <p>A driver-based three-statement model and unlevered DCF valuation of Texas Instruments (TXN), built from 10-K historical data (FY2023–FY2025) with a five-year forecast to FY2030. Intrinsic value falls below current market price across the full sensitivity range, and the model surfaced that TXN's fab expansion was not self-funded from operations.</p>
-        </div>
-        <div class="tldr-action">
-          <a href="TXN_3Statement_DCF_model.xlsx" download="TXN Three-Statement Model &amp; DCF - Jin-Tang Shen.xlsx" class="btn btn-primary">Download Excel Workbook</a>
-        </div>
+      <p class="case-hero-intro">A driver-based three-statement model and unlevered DCF valuation of Texas Instruments (TXN), built from 10-K historical data (FY2023–FY2025) with a five-year forecast to FY2030. Intrinsic value falls below current market price across the full sensitivity range, and the model surfaced that TXN's fab expansion was not self-funded from operations.</p>
+      <div class="case-hero-actions">
+        <a href="TXN_3Statement_DCF_model.xlsx" download="TXN Three-Statement Model &amp; DCF - Jin-Tang Shen.xlsx" class="btn btn-primary">Download Excel Workbook</a>
       </div>
     </div>
   </section>
 
   <!-- BODY -->
-  <section class="case-body">
+  <section class="case-body case-study-body">
     <div class="wrap">
+      <nav class="case-section-nav" aria-label="Case study sections">
+        <a href="#preview">Model Preview</a>
+        <a href="#scenario">Business Scenario</a>
+        <a href="#findings">Key Findings</a>
+      </nav>
 
       <!-- Model Preview -->
-      <div class="case-section" style="max-width:none;">
-        <h2 style="font-size:32px; letter-spacing:-0.01em; margin-bottom:20px;">Model Preview</h2>
-        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 20px;">Full three-statement model with drivers, five-year forecast, and DCF valuation. Navigate between sheets to explore the income statement, balance sheet, cash flow statement, and WACC sensitivity table.</p>
+      <div class="case-section case-section-full" id="preview">
+        <h2 class="case-preview-heading">Model Preview</h2>
+        <p class="case-preview-intro">Full three-statement model with drivers, five-year forecast, and DCF valuation. Navigate between sheets to explore the income statement, balance sheet, cash flow statement, and WACC sensitivity table.</p>
         <div class="excel-embed-wrap">
           <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSNmE2pcMcxPdzcP2wTSA7vXfthH89Nem9O5Fv8FRvwKr_OxippGLiRK8VDDn2UQzpGjc9rucijMaIJ/pubhtml?widget=true&amp;headers=false" frameborder="0" title="TXN Three-Statement Model &amp; DCF Valuation"></iframe>
         </div>
       </div>
 
       <!-- Business Scenario -->
-      <div class="case-section" style="max-width:none;">
+      <div class="case-section case-section-full" id="scenario">
         <h2>Business Scenario</h2>
         <div class="case-sub-grid">
           <div class="case-sub">
@@ -94,7 +94,7 @@
       </div>
 
       <!-- Key Findings -->
-      <div class="case-section">
+      <div class="case-section" id="findings">
         <h2>Key Findings</h2>
         <ul class="case-findings">
           <li>Across the entire WACC × terminal growth sensitivity range, intrinsic value falls below TXN's current market price, with the gap narrowing only at the most optimistic corner of the grid. The market is pricing in a longer high-growth phase than a standard five-year perpetuity model captures.</li>
@@ -103,6 +103,16 @@
         </ul>
       </div>
 
+      <section class="case-project-cta">
+        <div>
+          <h2>Ready to learn more about my work?</h2>
+          <p>Explore my background and experience, or get in touch.</p>
+        </div>
+        <div class="case-project-cta-actions">
+          <a href="resume.html" class="btn btn-primary">View Resume</a>
+          <a href="index.html#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </section>
 
     </div>
   </section>

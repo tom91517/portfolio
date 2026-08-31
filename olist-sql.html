@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GY1DFJFTY4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GY1DFJFTY4');
+</script>
+<title>Olist E-Commerce SQL Analysis</title>
+<meta name="description" content="A MySQL business analysis of Olist e-commerce data covering revenue performance, concentration risk, delivery performance, and customer experience.">
+<meta property="og:title" content="Olist E-Commerce SQL Analysis">
+<meta property="og:description" content="A business-focused MySQL case study covering revenue performance, concentration risk, delivery performance, and customer experience.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a class="wordmark" href="index.html">
+      <span class="mark"><span></span><span></span><span></span><span></span></span>
+      <span class="wordmark-text">Jin-Tang Shen (Tom)<span class="wordmark-sub">Financial Analyst Portfolio · FP&amp;A &amp; Modeling · MSF @ U of Arizona</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="resume.html" class="nav-cta">Resume</a>
+      <a href="projects.html" class="active" aria-current="page">Projects</a>
+      <a href="articles.html">Articles</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-main">
+  <section class="case-hero case-hero-detailed">
+    <div class="wrap">
+      <a href="projects.html" class="case-back">&larr; Back to Projects</a>
+      <h1>Olist Brazilian E-Commerce SQL Analysis</h1>
+      <p class="case-hero-intro">An end-to-end MySQL case study using the Olist Brazilian E-Commerce dataset to examine revenue performance, concentration risk, and the relationship between delivery outcomes and customer experience.</p>
+      <div class="case-hero-actions">
+        <a href="https://github.com/tom91517/olist-ecommerce-sql-analysis" target="_blank" rel="noopener" class="btn btn-primary">View GitHub Repository &#8599;</a>
+        <a href="#database" class="btn btn-secondary">Explore the ERD</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-body case-study-body">
+    <div class="wrap">
+      <nav class="case-section-nav" aria-label="Case study sections">
+        <a href="#questions">Business Questions</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#database">Database</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#recommendations">Takeaways</a>
+      </nav>
+
+      <section class="case-section case-section-wide" id="questions">
+        <div class="case-section-heading">
+          <h2>Business Questions</h2>
+          <p>The analysis focuses on three management questions, with SQL used as the analytical method rather than the focus of the page.</p>
+        </div>
+        <div class="case-question-grid">
+          <article class="case-question-card">
+            <h3>Revenue Performance</h3>
+            <p>How is Product Sales performing over time, and which categories are contributing to growth?</p>
+          </article>
+          <article class="case-question-card">
+            <h3>Revenue Concentration &amp; Dependency Risk</h3>
+            <p>Where is Product Sales concentrated across customers, categories, and sellers?</p>
+          </article>
+          <article class="case-question-card">
+            <h3>Delivery Performance &amp; Customer Experience</h3>
+            <p>Where do delivery issues occur, and how are delivery outcomes associated with customer reviews?</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-section case-section-wide" id="methodology">
+        <div class="case-section-heading">
+          <h2>Data &amp; Methodology</h2>
+          <p>A consistent scope keeps the analyses comparable and reduces the risk of inflated results from one-to-many joins.</p>
+        </div>
+        <div class="case-method-grid">
+          <article class="case-method-card case-method-card-featured">
+            <span class="case-method-label">Dataset Overview</span>
+            <h3>Olist Brazilian E-Commerce</h3>
+            <p>A relational dataset covering orders, customers, products, sellers, payments, reviews, and geographic information.</p>
+          </article>
+          <article class="case-method-card">
+            <span class="case-method-label">Product Sales</span>
+            <code>SUM(order_items.price)</code>
+            <p>Freight is evaluated separately and is not included in Product Sales.</p>
+          </article>
+          <article class="case-method-card">
+            <span class="case-method-label">Analysis Period</span>
+            <h3>Jan 2017 to Aug 2018</h3>
+            <p>Incomplete boundary periods are excluded from the main trend analysis.</p>
+          </article>
+          <article class="case-method-card">
+            <span class="case-method-label">Order Scope</span>
+            <h3>Delivered Orders</h3>
+            <p>Sales-related analyses use delivered orders to keep the operating scope consistent.</p>
+          </article>
+          <article class="case-method-card case-method-card-wide">
+            <span class="case-method-label">Data Quality Considerations</span>
+            <ul>
+              <li>Use <code>customer_unique_id</code> for customer-level analysis.</li>
+              <li>Control for item-level and payment-level row multiplication.</li>
+              <li>Retain the latest review when an order has multiple review records.</li>
+              <li>Treat ZIP code prefixes carefully because they are not unique.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-section case-section-wide case-database-module" id="database">
+        <div class="case-section-heading case-section-heading-split">
+          <div>
+            <h2>Relational model and ERD</h2>
+          </div>
+          <p><code>orders</code> serves as the central transaction table, linking customers to order items, payments, and reviews. Product and seller dimensions connect through <code>order_items</code>.</p>
+        </div>
+        <figure class="case-erd-frame">
+          <a class="case-erd-trigger" href="sql_project/olist_erd.png" target="_blank" rel="noopener" aria-label="Open the Olist entity relationship diagram at full size">
+            <img src="sql_project/olist_erd.png" alt="Entity relationship diagram for the Olist e-commerce MySQL database" loading="lazy">
+          </a>
+          <figcaption>Olist database entity relationship diagram. Select the image to open the full-size version.</figcaption>
+        </figure>
+        <dialog class="case-erd-dialog" aria-label="Full-size Olist entity relationship diagram">
+          <div class="case-erd-dialog-header">
+            <span>Olist database ERD</span>
+            <button type="button" class="resume-modal-close case-erd-dialog-close" aria-label="Close full-size ERD">&times;</button>
+          </div>
+          <div class="case-erd-dialog-scroll">
+            <img src="sql_project/olist_erd.png" alt="Full-size entity relationship diagram for the Olist e-commerce MySQL database">
+          </div>
+        </dialog>
+      </section>
+
+      <div id="analysis" class="case-analysis-list">
+        <article class="case-analysis-block">
+          <header class="case-analysis-header">
+            <h2>Revenue Performance</h2>
+            <p class="case-analysis-question"><strong>Business question:</strong> How is the business performing, and what is driving Product Sales growth?</p>
+          </header>
+          <div class="case-kpi-grid" aria-label="Revenue performance KPIs">
+            <div class="case-kpi-placeholder"><span>Top 5 Categories</span><strong>39.88%</strong><small>of total Product Sales</small></div>
+            <div class="case-kpi-placeholder"><span>Categories Growing</span><strong>50 of 72</strong><small>69.44% grew from 2017 H2 to 2018 H1</small></div>
+            <div class="case-kpi-placeholder"><span>Top 5 Growth Contributors</span><strong>45.18%</strong><small>of total positive growth, equal to 811.7K in incremental Product Sales</small></div>
+          </div>
+          <div class="case-content-grid case-revenue-visual-grid">
+            <div class="case-visual-placeholder case-category-growth-chart" role="img" aria-label="Category Growth Breadth: 50 growing categories and 22 non-growing categories">
+              <strong>Category Growth Breadth</strong>
+              <div class="category-growth-bar" aria-hidden="true">
+                <span class="category-growth-bar-growing"></span>
+                <span class="category-growth-bar-non-growing"></span>
+              </div>
+              <div class="category-growth-legend">
+                <div><span class="category-growth-dot category-growth-dot-growing"></span><span>Growing categories</span><strong>50</strong></div>
+                <div><span class="category-growth-dot category-growth-dot-non-growing"></span><span>Non-growing categories</span><strong>22</strong></div>
+              </div>
+              <p>69.44% of category groups grew from 2017 H2 to 2018 H1.</p>
+            </div>
+          </div>
+          <p class="case-visual-method-note">Delivered orders, Jan 2017 to Aug 2018. Product Sales = item price excluding freight.</p>
+          <div class="case-insight-grid">
+            <div class="case-insight-card">
+              <span>Key Findings</span>
+              <ul class="case-findings case-insight-findings">
+                <li>The top five product categories generated 39.88% of total Product Sales.</li>
+                <li>50 of 72 category groups grew from 2017 H2 to 2018 H1, representing 69.44% of categories.</li>
+                <li>The top five growth categories contributed 45.18% of total positive growth.</li>
+                <li>Growth was relatively broad based, but a meaningful share of incremental growth remained concentrated in the strongest categories.</li>
+              </ul>
+            </div>
+            <div class="case-insight-card case-insight-card-accent">
+              <span>Business Implication</span>
+              <p class="case-insight-copy">Growth is not dependent on only a small number of categories, which suggests a relatively broad sales expansion. However, nearly half of positive growth still came from the five strongest growth categories. Management should monitor these key growth drivers while continuing to support growth across the broader category mix.</p>
+            </div>
+          </div>
+          <div class="case-code-card case-code-card-wide case-revenue-sql">
+            <div class="case-code-header"><span>Highlighted SQL</span><span>05_revenue_performance.sql</span></div>
+            <pre><code><span class="sql-keyword">WITH</span> monthly_sales <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span>
+        <span class="sql-function">DATE_FORMAT</span>(o.order_purchase_timestamp, <span class="sql-string">'%Y-%m'</span>) <span class="sql-keyword">AS</span> order_month,
+        <span class="sql-function">SUM</span>(oi.price) <span class="sql-keyword">AS</span> product_sales
+    <span class="sql-keyword">FROM</span> orders <span class="sql-keyword">AS</span> o
+    <span class="sql-keyword">JOIN</span> order_items <span class="sql-keyword">AS</span> oi
+        <span class="sql-keyword">ON</span> o.order_id = oi.order_id
+    <span class="sql-keyword">WHERE</span> o.order_status = <span class="sql-string">'delivered'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &gt;= <span class="sql-string">'2017-01-01'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &lt; <span class="sql-string">'2018-09-01'</span>
+    <span class="sql-keyword">GROUP BY</span> order_month
+),
+
+sales_with_lag <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> order_month, product_sales,
+        <span class="sql-function">LAG</span>(product_sales) <span class="sql-keyword">OVER</span> (<span class="sql-keyword">ORDER BY</span> order_month) <span class="sql-keyword">AS</span> previous_month_sales
+    <span class="sql-keyword">FROM</span> monthly_sales
+)
+
+<span class="sql-keyword">SELECT</span> order_month, product_sales, previous_month_sales,
+    <span class="sql-function">ROUND</span>((product_sales - previous_month_sales) / <span class="sql-function">NULLIF</span>(previous_month_sales, 0) * 100, 2) <span class="sql-keyword">AS</span> mom_growth_pct
+<span class="sql-keyword">FROM</span> sales_with_lag
+<span class="sql-keyword">ORDER BY</span> order_month;</code></pre>
+          </div>
+          <a class="case-code-source-link" href="https://github.com/tom91517/olist-ecommerce-sql-analysis/blob/main/05_revenue_performance.sql" target="_blank" rel="noopener noreferrer">View full Analysis 1 SQL on GitHub ↗</a>
+        </article>
+
+        <article class="case-analysis-block">
+          <header class="case-analysis-header">
+            <h2>Revenue Concentration &amp; Dependency Risk</h2>
+            <p class="case-analysis-question"><strong>Business question:</strong> Where is Product Sales concentrated, and where could dependency risk exist?</p>
+          </header>
+          <div class="case-kpi-grid" aria-label="Revenue concentration KPIs">
+            <div class="case-kpi-placeholder"><span>Customer</span><strong>29.14%</strong><small>of Product Sales generated by the top 5% of customers</small></div>
+            <div class="case-kpi-placeholder"><span>Category</span><strong>33.14%</strong><small>of Product Sales generated by the top 5% of categories</small></div>
+            <div class="case-kpi-placeholder"><span>Seller</span><strong>52.99%</strong><small>of Product Sales generated by the top 5% of sellers</small></div>
+          </div>
+          <div class="case-content-grid case-concentration-visual-grid">
+            <div class="case-visual-placeholder case-concentration-chart" role="img" aria-label="Product Sales Concentration Comparison. Customers, categories, and sellers are compared at the top 1, 5, 10, and 20 percent thresholds.">
+              <div class="concentration-chart-header">
+                <strong>Product Sales Concentration Comparison</strong>
+                <div class="concentration-chart-legend" aria-hidden="true">
+                  <span><i class="concentration-swatch concentration-customer"></i>Customers</span>
+                  <span><i class="concentration-swatch concentration-category"></i>Categories</span>
+                  <span><i class="concentration-swatch concentration-seller"></i>Sellers</span>
+                </div>
+              </div>
+              <div class="concentration-chart-groups">
+                <div class="concentration-threshold">
+                  <strong>Top 1%</strong>
+                  <div class="concentration-bars">
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-customer" style="--share:11.48%"></span></div><b>11.48%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-category" style="--share:9.33%"></span></div><b>9.33%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-seller" style="--share:25.93%"></span></div><b>25.93%</b></div>
+                  </div>
+                </div>
+                <div class="concentration-threshold">
+                  <strong>Top 5%</strong>
+                  <div class="concentration-bars">
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-customer" style="--share:29.14%"></span></div><b>29.14%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-category" style="--share:33.14%"></span></div><b>33.14%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-seller" style="--share:52.99%"></span></div><b>52.99%</b></div>
+                  </div>
+                </div>
+                <div class="concentration-threshold">
+                  <strong>Top 10%</strong>
+                  <div class="concentration-bars">
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-customer" style="--share:41.10%"></span></div><b>41.10%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-category" style="--share:54.52%"></span></div><b>54.52%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-seller" style="--share:67.04%"></span></div><b>67.04%</b></div>
+                  </div>
+                </div>
+                <div class="concentration-threshold">
+                  <strong>Top 20%</strong>
+                  <div class="concentration-bars">
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-customer" style="--share:56.62%"></span></div><b>56.62%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-category" style="--share:76.33%"></span></div><b>76.33%</b></div>
+                    <div class="concentration-bar-row"><div class="concentration-track"><span class="concentration-seller" style="--share:82.20%"></span></div><b>82.20%</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="case-visual-method-note">Delivered orders, Jan 2017 to Aug 2018. Concentration is measured as share of Product Sales.</p>
+          <div class="case-insight-grid">
+            <div class="case-insight-card">
+              <span>Key Findings</span>
+              <ul class="case-findings case-insight-findings">
+                <li>Seller concentration was the strongest of the three dimensions analyzed.</li>
+                <li>The top 5% of sellers generated 52.99% of Product Sales, compared with 33.14% for categories and 29.14% for customers.</li>
+                <li>The top 20% of sellers generated 82.20% of Product Sales.</li>
+                <li>Customer concentration should not be interpreted as dependence on loyal high-frequency buyers. Only 3.00% of customers placed more than one order, and repeat customers contributed only 5.50% of Product Sales.</li>
+              </ul>
+            </div>
+            <div class="case-insight-card case-insight-card-accent">
+              <span>Business Implication</span>
+              <p class="case-insight-copy">Product Sales are more concentrated among sellers than among customers or product categories, making seller concentration the strongest potential dependency risk identified in the dataset. Management should monitor exposure to the highest-contributing sellers and evaluate whether key categories have sufficient seller diversification. This analysis identifies concentration, not confirmed supply risk, because the dataset does not include seller capacity, contracts, or substitution options.</p>
+            </div>
+          </div>
+          <div class="case-code-card case-code-card-wide case-concentration-sql">
+            <div class="case-code-header"><span>Highlighted SQL</span><span>06_revenue_concentration.sql</span></div>
+            <pre><code><span class="sql-keyword">WITH</span> seller_sales <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> oi.seller_id <span class="sql-keyword">AS</span> seller_id, <span class="sql-function">SUM</span>(oi.price) <span class="sql-keyword">AS</span> product_sales
+    <span class="sql-keyword">FROM</span> orders <span class="sql-keyword">AS</span> o
+    <span class="sql-keyword">JOIN</span> order_items <span class="sql-keyword">AS</span> oi
+        <span class="sql-keyword">ON</span> o.order_id = oi.order_id
+    <span class="sql-keyword">WHERE</span> o.order_status = <span class="sql-string">'delivered'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &gt;= <span class="sql-string">'2017-01-01'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &lt; <span class="sql-string">'2018-09-01'</span>
+    <span class="sql-keyword">GROUP BY</span> oi.seller_id
+),
+ranked_sellers <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> seller_id, product_sales,
+        <span class="sql-function">ROW_NUMBER</span>() <span class="sql-keyword">OVER</span> (<span class="sql-keyword">ORDER BY</span> product_sales <span class="sql-keyword">DESC</span>) <span class="sql-keyword">AS</span> sales_rank,
+        <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">OVER</span> () <span class="sql-keyword">AS</span> total_sellers
+    <span class="sql-keyword">FROM</span> seller_sales
+)
+<span class="sql-keyword">SELECT</span> <span class="sql-function">ROUND</span>(<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> sales_rank &lt;= <span class="sql-function">CEIL</span>(total_sellers * 0.05) <span class="sql-keyword">THEN</span> product_sales <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / <span class="sql-function">SUM</span>(product_sales) * 100, 2) <span class="sql-keyword">AS</span> top_5_pct_share
+<span class="sql-keyword">FROM</span> ranked_sellers;</code></pre>
+          </div>
+          <a class="case-code-source-link" href="https://github.com/tom91517/olist-ecommerce-sql-analysis/blob/main/06_revenue_concentration.sql" target="_blank" rel="noopener noreferrer">View full Analysis 2 SQL on GitHub ↗</a>
+        </article>
+
+        <article class="case-analysis-block">
+          <header class="case-analysis-header">
+            <h2>Delivery Performance &amp; Customer Experience</h2>
+            <p class="case-analysis-question"><strong>Business question:</strong> Where are delivery problems occurring, and how are they associated with customer satisfaction?</p>
+          </header>
+          <div class="case-kpi-grid" aria-label="Delivery performance KPIs">
+            <div class="case-kpi-placeholder"><span>Late Delivery Rate</span><strong>8.13%</strong><small>7,822 of 96,203 delivered orders arrived after the estimated delivery date</small></div>
+            <div class="case-kpi-placeholder"><span>Late Order 1-Star Rate</span><strong>53.76%</strong><small>compared with 6.60% for on-time orders</small></div>
+            <div class="case-kpi-placeholder"><span>Review Score Cliff</span><strong>&gt;3 Days Late</strong><small>average review score falls sharply once delays exceed approximately three days</small></div>
+          </div>
+          <div class="case-visual-grid case-delivery-visual-grid">
+            <div class="case-visual-placeholder case-state-delivery-chart" role="img" aria-label="Selected Customer State Late Delivery Rates. AL 23.99%, MA 19.64%, PI 16.00%, CE 15.40%, BA 14.05%, RJ 13.52%, SP 5.90%, MG 5.63%, and PR 5.02%.">
+              <strong>Selected Customer State Late Delivery Rates</strong>
+              <div class="state-delivery-bars">
+                <div class="state-delivery-row"><span>AL</span><div><i style="width:95.96%"></i></div><b>23.99%</b></div>
+                <div class="state-delivery-row"><span>MA</span><div><i style="width:78.56%"></i></div><b>19.64%</b></div>
+                <div class="state-delivery-row"><span>PI</span><div><i style="width:64%"></i></div><b>16.00%</b></div>
+                <div class="state-delivery-row"><span>CE</span><div><i style="width:61.6%"></i></div><b>15.40%</b></div>
+                <div class="state-delivery-row"><span>BA</span><div><i style="width:56.2%"></i></div><b>14.05%</b></div>
+                <div class="state-delivery-row"><span>RJ</span><div><i style="width:54.08%"></i></div><b>13.52%</b></div>
+                <div class="state-delivery-row"><span>SP</span><div><i style="width:23.6%"></i></div><b>5.90%</b></div>
+                <div class="state-delivery-row"><span>MG</span><div><i style="width:22.52%"></i></div><b>5.63%</b></div>
+                <div class="state-delivery-row"><span>PR</span><div><i style="width:20.08%"></i></div><b>5.02%</b></div>
+              </div>
+              <p class="delivery-chart-selection-note">Selected states illustrate the variation in late delivery rates across destination markets.</p>
+              <p class="delivery-chart-note">Seller-tier late rates were similar: Tier A 8.47%, Tier B 7.41%, Tier C 8.08%.</p>
+            </div>
+            <div class="case-visual-placeholder case-review-score-chart" role="img" aria-label="Average Review Score by Delivery Timing. Scores decline from 4.32 for orders arriving at least 10 days early to 1.73 for orders arriving at least 15 days late.">
+              <strong>Average Review Score by Delivery Timing</strong>
+              <div class="review-score-bars">
+                <div class="review-score-row"><span>10+ days early</span><div><i style="width:86.4%"></i></div><b>4.32</b></div>
+                <div class="review-score-row"><span>3–10 days early</span><div><i style="width:85%"></i></div><b>4.25</b></div>
+                <div class="review-score-row"><span>0–3 days early</span><div><i style="width:82.6%"></i></div><b>4.13</b></div>
+                <div class="review-score-row"><span>On time to 3 days late</span><div><i style="width:71.8%"></i></div><b>3.59</b></div>
+                <div class="review-score-cliff">Review scores decline sharply after approximately 3 days late.</div>
+                <div class="review-score-row review-score-row-late"><span>3–7 days late</span><div><i style="width:42%"></i></div><b>2.10</b></div>
+                <div class="review-score-row review-score-row-late"><span>7–15 days late</span><div><i style="width:33.4%"></i></div><b>1.67</b></div>
+                <div class="review-score-row review-score-row-late"><span>15+ days late</span><div><i style="width:34.6%"></i></div><b>1.73</b></div>
+              </div>
+            </div>
+          </div>
+          <p class="case-visual-method-note">Delivered orders, Jan 2017 to Aug 2018. Review analysis uses the latest review per order.</p>
+          <div class="case-insight-grid">
+            <div class="case-insight-card">
+              <span>Key Findings</span>
+              <ul class="case-findings case-insight-findings">
+                <li>8.13% of delivered orders arrived after the estimated delivery date.</li>
+                <li>Seller sales tier did not meaningfully explain late delivery performance, with late rates of 8.47%, 7.41%, and 8.08% across Tiers A, B, and C.</li>
+                <li>Late delivery rates varied substantially across customer destination states, suggesting stronger geographic concentration than seller-tier concentration.</li>
+                <li>Average review scores declined sharply once delivery delays exceeded approximately three days.</li>
+                <li>Late orders had a 53.76% one-star review rate compared with 6.60% for on-time orders, approximately 8.1x higher.</li>
+              </ul>
+            </div>
+            <div class="case-insight-card case-insight-card-accent">
+              <span>Business Implication</span>
+              <p class="case-insight-copy">Delivery delays are strongly associated with lower customer satisfaction. The sharp deterioration after approximately three days late provides a practical intervention threshold: orders expected to exceed this point should be prioritized for proactive customer communication or operational review. Geographic differences also suggest that delivery performance should be monitored by destination market, while avoiding assumptions about root cause without additional logistics data.</p>
+            </div>
+          </div>
+          <div class="case-code-card case-code-card-wide case-delivery-sql">
+            <div class="case-code-header"><span>Highlighted SQL</span><span>07_delivery_customer_experience.sql</span></div>
+            <pre><code><span class="sql-keyword">WITH</span> ranked_reviews <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> r.order_id <span class="sql-keyword">AS</span> order_id, r.review_score <span class="sql-keyword">AS</span> review_score,
+        <span class="sql-function">ROW_NUMBER</span>() <span class="sql-keyword">OVER</span> (<span class="sql-keyword">PARTITION BY</span> r.order_id <span class="sql-keyword">ORDER BY</span> r.review_answer_timestamp <span class="sql-keyword">DESC</span>) <span class="sql-keyword">AS</span> review_rank
+    <span class="sql-keyword">FROM</span> order_reviews <span class="sql-keyword">AS</span> r
+),
+latest_reviews <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> order_id, review_score <span class="sql-keyword">FROM</span> ranked_reviews <span class="sql-keyword">WHERE</span> review_rank = 1
+),
+delivery_reviews <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> <span class="sql-function">DATEDIFF</span>(o.order_delivered_customer_date, o.order_estimated_delivery_date) <span class="sql-keyword">AS</span> delay_days,
+        lr.review_score <span class="sql-keyword">AS</span> review_score
+    <span class="sql-keyword">FROM</span> orders <span class="sql-keyword">AS</span> o
+    <span class="sql-keyword">JOIN</span> latest_reviews <span class="sql-keyword">AS</span> lr <span class="sql-keyword">ON</span> o.order_id = lr.order_id
+    <span class="sql-keyword">WHERE</span> o.order_status = <span class="sql-string">'delivered'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &gt;= <span class="sql-string">'2017-01-01'</span>
+      <span class="sql-keyword">AND</span> o.order_purchase_timestamp &lt; <span class="sql-string">'2018-09-01'</span>
+      <span class="sql-keyword">AND</span> o.order_delivered_customer_date <span class="sql-keyword">IS NOT NULL</span>
+      <span class="sql-keyword">AND</span> o.order_estimated_delivery_date <span class="sql-keyword">IS NOT NULL</span>
+)
+<span class="sql-keyword">SELECT CASE WHEN</span> delay_days &lt;= -10 <span class="sql-keyword">THEN</span> <span class="sql-string">'10+ days early'</span> <span class="sql-keyword">WHEN</span> delay_days &lt; -3 <span class="sql-keyword">THEN</span> <span class="sql-string">'3-10 days early'</span>
+    <span class="sql-keyword">WHEN</span> delay_days &lt; 0 <span class="sql-keyword">THEN</span> <span class="sql-string">'0-3 days early'</span> <span class="sql-keyword">WHEN</span> delay_days &lt;= 3 <span class="sql-keyword">THEN</span> <span class="sql-string">'On time to 3 days late'</span>
+    <span class="sql-keyword">WHEN</span> delay_days &lt;= 7 <span class="sql-keyword">THEN</span> <span class="sql-string">'3-7 days late'</span> <span class="sql-keyword">WHEN</span> delay_days &lt;= 15 <span class="sql-keyword">THEN</span> <span class="sql-string">'7-15 days late'</span>
+    <span class="sql-keyword">ELSE</span> <span class="sql-string">'15+ days late'</span> <span class="sql-keyword">END AS</span> delivery_timing,
+    <span class="sql-function">ROUND</span>(<span class="sql-function">AVG</span>(review_score), 2) <span class="sql-keyword">AS</span> avg_review_score
+<span class="sql-keyword">FROM</span> delivery_reviews <span class="sql-keyword">GROUP BY</span> delivery_timing;</code></pre>
+          </div>
+          <a class="case-code-source-link" href="https://github.com/tom91517/olist-ecommerce-sql-analysis/blob/main/07_delivery_customer_experience.sql" target="_blank" rel="noopener noreferrer">View full Analysis 3 SQL on GitHub ↗</a>
+        </article>
+      </div>
+
+      <section class="case-section case-section-wide" id="recommendations">
+        <div class="case-section-heading">
+          <h2>Recommendations</h2>
+        </div>
+        <div class="case-recommendation-grid">
+          <div class="case-recommendation-placeholder case-recommendation-card">
+            <span>01</span>
+            <h3>Monitor and Diversify Seller Exposure</h3>
+            <p>Seller concentration is the strongest potential dependency risk identified in the analysis, with the top 5% of sellers generating 52.99% of Product Sales. Management should monitor exposure to the highest-contributing sellers and evaluate whether key product categories have sufficient seller diversification.</p>
+          </div>
+          <div class="case-recommendation-placeholder case-recommendation-card">
+            <span>02</span>
+            <h3>Sustain Broad-Based Category Growth</h3>
+            <p>Growth was relatively broad based, with 50 of 72 category groups increasing sales from 2017 H2 to 2018 H1. However, the top five growth categories still contributed 45.18% of total positive growth. Management should support the strongest growth drivers while continuing to develop the broader category mix.</p>
+          </div>
+          <div class="case-recommendation-placeholder case-recommendation-card">
+            <span>03</span>
+            <h3>Intervene Before Delays Exceed 3 Days</h3>
+            <p>Customer satisfaction deteriorates sharply once delivery delays exceed approximately three days. Orders expected to cross this threshold should be prioritized for proactive customer communication or operational review, with delivery performance monitored by destination market.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-project-cta">
+        <div>
+          <h2>Ready to learn more about my work?</h2>
+          <p>Explore my background and experience, or get in touch.</p>
+        </div>
+        <div class="case-project-cta-actions">
+          <a href="resume.html" class="btn btn-primary">View Resume</a>
+          <a href="index.html#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">&copy; 2026 Jin-Tang Shen (Tom)</span>
+        <span class="footer-sub">MS Finance @ University of Arizona</span>
+      </div>
+      <div class="footer-right">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="resume.html">Resume</a>
+          <a href="projects.html">Projects</a>
+          <a href="articles.html">Articles</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/jintang-shen/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a href="mailto:tom91517@gmail.com">Email &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script src="olist-sql.js"></script>
+</body>
+</html>

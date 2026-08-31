@@ -49,37 +49,37 @@
 <main class="page-main">
 
   <!-- HERO -->
-  <section class="case-hero">
+  <section class="case-hero case-hero-detailed">
     <div class="wrap">
       <a href="projects.html" class="case-back">← Back to Projects</a>
       <h1>NorthBeam Analytics: FY2026 Expense Variance Analysis</h1>
-      <div class="case-tldr">
-        <div class="tldr-body">
-          <div class="tldr-label">Executive Summary</div>
-          <p>A 12-month, department-level Budget vs. Actual tracker for a fictional B2B SaaS company. It covers four cost centers, automated variance calculations, status indicators, and a dashboard with KPI cards and three charts.</p>
-        </div>
-        <div class="tldr-action">
-          <a href="NorthBeam_BvA.xlsx" download="NorthBeam Analytics - BvA Workbook.xlsx" class="btn btn-primary">Download Excel Workbook</a>
-        </div>
+      <p class="case-hero-intro">A 12-month, department-level Budget vs. Actual tracker for a fictional B2B SaaS company. It covers four cost centers, automated variance calculations, status indicators, and a dashboard with KPI cards and three charts.</p>
+      <div class="case-hero-actions">
+        <a href="NorthBeam_BvA.xlsx" download="NorthBeam Analytics - BvA Workbook.xlsx" class="btn btn-primary">Download Excel Workbook</a>
       </div>
     </div>
   </section>
 
   <!-- BODY -->
-  <section class="case-body">
+  <section class="case-body case-study-body">
     <div class="wrap">
+      <nav class="case-section-nav" aria-label="Case study sections">
+        <a href="#preview">Workbook Preview</a>
+        <a href="#scenario">Business Scenario</a>
+        <a href="#findings">Key Findings</a>
+      </nav>
 
       <!-- Excel Workbook Embed -->
-      <div class="case-section" style="max-width:none;">
-        <h2 style="font-size:32px; letter-spacing:-0.01em; margin-bottom:20px;">Workbook Preview</h2>
-        <p style="color:var(--ink-soft); font-size:14.5px; margin:0 0 20px;">Interactive Excel workbook. Navigate between tabs to explore the model, variance calculations, and dashboard. Use the Download button below if you want to open it locally and inspect the formulas.</p>
+      <div class="case-section case-section-full" id="preview">
+        <h2 class="case-preview-heading">Workbook Preview</h2>
+        <p class="case-preview-intro">Interactive Excel workbook. Navigate between tabs to explore the model, variance calculations, and dashboard. Use the Download button below if you want to open it locally and inspect the formulas.</p>
         <div class="excel-embed-wrap">
           <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTlkCdI1Vpsw4N5OLamZJqdrrpq4l0VcdV5Iu1VOLULVDhC3lAdDE637tyqECRja8TFfwUdI4q7kWHs/pubhtml?widget=true&amp;headers=false" frameborder="0" title="NorthBeam Analytics BvA Workbook"></iframe>
         </div>
       </div>
 
       <!-- Business Scenario -->
-      <div class="case-section" style="max-width:none;">
+      <div class="case-section case-section-full" id="scenario">
         <h2>Business Scenario</h2>
         <div class="case-sub-grid">
           <div class="case-sub">
@@ -94,7 +94,7 @@
       </div>
 
       <!-- Key Findings -->
-      <div class="case-section">
+      <div class="case-section" id="findings">
         <h2>Key Findings</h2>
         <ul class="case-findings">
           <li>S&amp;M overspent by $1.38M across the full year, driven by incremental ad spend and an aggressive Q4 push.</li>
@@ -104,6 +104,16 @@
         </ul>
       </div>
 
+      <section class="case-project-cta">
+        <div>
+          <h2>Ready to learn more about my work?</h2>
+          <p>Explore my background and experience, or get in touch.</p>
+        </div>
+        <div class="case-project-cta-actions">
+          <a href="resume.html" class="btn btn-primary">View Resume</a>
+          <a href="index.html#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </section>
 
     </div>
   </section>
