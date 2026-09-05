@@ -1554,7 +1554,7 @@ body.resume-modal-lock{ overflow:hidden; }
   scroll-margin-top:196px;
 }
 .case-study-body .case-section[id]{ scroll-margin-top:196px; }
-.case-section-heading{ max-width:760px; margin-bottom:28px; }
+.case-section-heading{ max-width:960px; margin-bottom:28px; }
 .case-section-heading h2,
 .case-analysis-header h2,
 .case-project-cta h2{
